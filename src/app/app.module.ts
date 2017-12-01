@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MaterialsModule } from './materials.module';
 
 
 import { AppComponent } from './app.component';
@@ -12,7 +13,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     TopBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterialsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
