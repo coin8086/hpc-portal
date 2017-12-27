@@ -7,3 +7,10 @@
   margin-left: 0.5em;
 }
 
+.app-container {
+  min-height: 500px;
+}
+
+.main-container {
+  padding: 1em;
+}

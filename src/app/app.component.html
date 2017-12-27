@@ -1,11 +1,25 @@
 <mat-toolbar color="primary">
+  <button mat-icon-button (click)="side.toggle()"><mat-icon>menu</mat-icon></button>
   <img class="logo" src="/assets/logo.jpg" />
-  <span class="title">HPC Portal</span>
+  <h1 class="title">Microsoft HPC</h1>
 </mat-toolbar>
 
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-</div>
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #side mode="side" opened="true">
+    <mat-nav-list>
+      <a mat-list-item>Dashboard</a>
+      <a mat-list-item>Configuration</a>
+      <a mat-list-item>Resource</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-container">
+    <!--The content below is only a placeholder and can be replaced.-->
+    <div style="text-align:center">
+      <h1>
+        Welcome to {{title}}!
+      </h1>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
