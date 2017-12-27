@@ -4,13 +4,11 @@ import { MaterialsModule } from './materials.module';
 
 
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent
   ],
   imports: [
     BrowserModule,
