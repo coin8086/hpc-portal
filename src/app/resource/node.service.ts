@@ -21,4 +21,14 @@ export class NodeService {
         })
       );
   }
+
+  getNode(id: string): Observable<Node> {
+    return this.http.get<Node>(this.nodesUrl + '/' + id)
+      .pipe(
+        catchError((error: any): Observable<Node[]> => {
+          console.error(error);
+          return of({});
+        })
+      );
+  }
 }
