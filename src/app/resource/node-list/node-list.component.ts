@@ -1,24 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { Node } from '../node';
+import { NodeService } from '../node.service';
 
 @Component({
   selector: 'resource-node-list',
   templateUrl: './node-list.component.html',
   styleUrls: ['./node-list.component.css']
 })
-export class NodeListComponent implements OnInit {
+export class NodeListComponent implements AfterViewInit {
   dataSource = new MatTableDataSource();
   displayedColumns = ['name', 'state', 'health'];
 
-    constructor() {
-      this.dataSource.data = [
-        { name: 'HN1', state: 'online', health: 'ok' },
-        { name: 'HN2', state: 'online', health: 'error' },
-        { name: 'HN3', state: 'offline', health: 'ok' },
-      ];
-    }
+  constructor(private nodeService: NodeService) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.nodeService.getNodes().subscribe(nodes => this.dataSource.data = nodes);
   }
 
 }
