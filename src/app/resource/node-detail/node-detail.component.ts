@@ -10,7 +10,7 @@ import { NodeService } from '../node.service';
   styleUrls: ['./node-detail.component.css']
 })
 export class NodeDetailComponent implements OnInit {
-  node: Node = {};
+  node: Node = {} as Node;
 
   constructor(
     private nodeService: NodeService,
@@ -19,7 +19,7 @@ export class NodeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.nodeService.getNode(id).subscribe(node => this.node = node);
   }
 
