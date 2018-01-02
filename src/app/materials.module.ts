@@ -6,6 +6,7 @@ import {
   MatButtonModule,
   MatIconModule,
   MatTableModule,
+  MatTabsModule,
 } from '@angular/material';
 
 const modules = [
@@ -15,6 +16,7 @@ const modules = [
   MatButtonModule,
   MatIconModule,
   MatTableModule,
+  MatTabsModule,
 ];
 
 @NgModule({

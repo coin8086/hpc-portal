@@ -7,6 +7,7 @@ import { MaterialsModule } from '../materials.module';
 import { ResourceComponent } from './resource.component';
 import { NodeListComponent } from './node-list/node-list.component';
 import { NodeDetailComponent } from './node-detail/node-detail.component';
+import { NodeHeatmapComponent } from './node-heatmap/node-heatmap.component';
 import { NodeService } from './node.service';
 import { InMemoryDataService }  from './in-memory-data.service';
 
@@ -25,7 +26,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
     ResourceRoutingModule,
     MaterialsModule,
   ],
-  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent],
+  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent],
   providers: [NodeService],
 })
 export class ResourceModule { }
