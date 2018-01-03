@@ -20,6 +20,11 @@
     <mat-cell *matCellDef="let node"> {{node.health}} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="runningJobs">
+    <mat-header-cell *matHeaderCellDef> Running Jobs </mat-header-cell>
+    <mat-cell *matCellDef="let node"> {{node.runningJobs}} </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let node; columns: displayedColumns;" (click)="viewDetail(node.id)"></mat-row>
 </mat-table>

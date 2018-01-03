@@ -11,7 +11,7 @@ import { NodeService } from '../node.service';
 })
 export class NodeListComponent implements AfterViewInit {
   dataSource = new MatTableDataSource();
-  displayedColumns = ['name', 'state', 'health'];
+  displayedColumns = ['name', 'state', 'health', 'runningJobs'];
 
   constructor(
     private nodeService: NodeService,
