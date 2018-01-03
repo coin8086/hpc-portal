@@ -1,8 +1,22 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
+  generateCpuUsage(): any[] {
+    let usage = [];
+    let now = new Date().getTime();
+    const span = 5 * 60 * 1000;
+    const num = 12;
+    for (let i = 0; i < num; i++) {
+      let d = new Date(now - span * i);
+      let v = Math.round(Math.random() * 100);
+      usage.push({ ts: d.getTime(), value: v });
+    }
+    usage.reverse();
+    return usage;
+  }
+
   createDb() {
-    const nodes = [
+    let nodes: any[] = [
       { id: 10, name: 'HN1', state: 'online', health: 'ok', runningJobs: 10 },
       { id: 12, name: 'HN2', state: 'online', health: 'error', runningJobs: 0 },
       { id: 13, name: 'HN3', state: 'offline', health: 'ok', runningJobs: 0 },
@@ -14,6 +28,10 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'WN23', state: 'online', health: 'ok', runningJobs: 70 },
       { id: 20, name: 'WN30', state: 'online', health: 'ok', runningJobs: 90 },
     ];
+    nodes.forEach(node => {
+      node.cpuUsage = this.generateCpuUsage();
+    });
+
     return { nodes };
   }
 }

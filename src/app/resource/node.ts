@@ -3,4 +3,5 @@ export class Node {
   state: string;
   health: string;
   runningJobs: number;
+  cpuUsage: any;
 }

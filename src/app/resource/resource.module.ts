@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ChartModule } from 'angular2-chartjs';
 import { ResourceRoutingModule } from './resource-routing.module';
 import { MaterialsModule } from '../materials.module';
 import { ResourceComponent } from './resource.component';
@@ -25,6 +26,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
     ResourceRoutingModule,
     MaterialsModule,
+    ChartModule,
   ],
   declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent],
   providers: [NodeService],
