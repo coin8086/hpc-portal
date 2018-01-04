@@ -15,20 +15,37 @@ export class InMemoryDataService implements InMemoryDbService {
     return usage;
   }
 
+  randomState(): string {
+    const states = ['online', 'offline'];
+    return states[Math.random() > 0.7 ? 1 : 0];
+  }
+
+  randomHealth(): string {
+    const states = ['ok', 'error'];
+    return states[Math.random() > 0.7 ? 1 : 0];
+  }
+
+  randomNum(scale: number): number {
+    return Math.round(Math.random() * scale);
+  }
+
   createDb() {
     let nodes: any[] = [
-      { id: 10, name: 'HN1', state: 'online', health: 'ok', runningJobs: 10 },
-      { id: 12, name: 'HN2', state: 'online', health: 'error', runningJobs: 0 },
-      { id: 13, name: 'HN3', state: 'offline', health: 'ok', runningJobs: 0 },
-      { id: 14, name: 'WN11', state: 'online', health: 'ok', runningJobs: 110 },
-      { id: 15, name: 'WN12', state: 'online', health: 'error', runningJobs: 1 },
-      { id: 16, name: 'WN13', state: 'offline', health: 'ok', runningJobs: 0 },
-      { id: 17, name: 'WN21', state: 'online', health: 'ok', runningJobs: 55 },
-      { id: 18, name: 'WN22', state: 'online', health: 'ok', runningJobs: 2 },
-      { id: 19, name: 'WN23', state: 'online', health: 'ok', runningJobs: 70 },
-      { id: 20, name: 'WN30', state: 'online', health: 'ok', runningJobs: 90 },
+      { id: 10, name: 'HN1', },
+      { id: 12, name: 'HN2', },
+      { id: 13, name: 'HN3', },
+      { id: 14, name: 'WN11',},
+      { id: 15, name: 'WN12',},
+      { id: 16, name: 'WN13',},
+      { id: 17, name: 'WN21',},
+      { id: 18, name: 'WN22',},
+      { id: 19, name: 'WN23',},
+      { id: 20, name: 'WN30',},
     ];
     nodes.forEach(node => {
+      node.state = this.randomState();
+      node.health = this.randomHealth();
+      node.runningJobs = node.state == 'offline' ? 0 : this.randomNum(100);
       node.cpuUsage = this.generateCpuUsage();
     });
 
