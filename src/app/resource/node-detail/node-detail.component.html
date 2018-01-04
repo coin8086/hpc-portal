@@ -1,5 +1,8 @@
-<p> Name: {{node.name}}  </p>
-<p> State: {{node.state}}  </p>
-<p> Health: {{node.health}}  </p>
-<chart type="line" [data]="cpuChartData" [options]="cpuChartOptions"></chart>
-<button mat-raised-button (click)="goBack()">go back</button>
+<h2>
+  {{node.name}}
+  <a mat-button (click)="goBack()">&#8629; Go back</a>
+</h2>
+<div class="section">
+  <h3>CPU Usage</h3>
+  <chart type="line" [data]="cpuChartData" [options]="cpuChartOptions"></chart>
+</div>
