@@ -20,6 +20,15 @@ export class NodeDetailComponent implements AfterViewInit {
     legend : {
       display: false,
     },
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 100,
+          stepSize: 25,
+        }
+      }]
+    }
   };
 
   constructor(
