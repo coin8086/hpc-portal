@@ -1,3 +1,11 @@
+.filter {
+  margin-top: 1em;
+}
+
+.filter mat-form-field {
+  width: 100%;
+}
+
 .mat-row {
   cursor: pointer;
 }
@@ -5,3 +13,4 @@
 .mat-row:hover {
   background: rgba(0,0,0,.04);
 }
+

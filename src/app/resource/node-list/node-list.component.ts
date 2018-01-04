@@ -27,4 +27,7 @@ export class NodeListComponent implements AfterViewInit {
     this.router.navigate(["..", id], { relativeTo: this.route })
   }
 
+  applyFilter(value: string): void {
+    this.dataSource.filter = value;
+  }
 }
