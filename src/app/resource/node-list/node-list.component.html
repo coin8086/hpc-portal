@@ -12,12 +12,12 @@
 
   <ng-container matColumnDef="state">
     <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
-    <mat-cell *matCellDef="let node"> {{node.state}} </mat-cell>
+    <mat-cell *matCellDef="let node"> {{node.state | titlecase }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="health">
     <mat-header-cell *matHeaderCellDef> Health </mat-header-cell>
-    <mat-cell *matCellDef="let node"> {{node.health}} </mat-cell>
+    <mat-cell *matCellDef="let node"> {{node.health | titlecase }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="runningJobs">
