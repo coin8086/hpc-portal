@@ -1,33 +1,33 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnChanges, SimpleChanges, EventEmitter, Input, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Node } from '../node';
-import { NodeService } from '../node.service';
 
 @Component({
   selector: 'resource-node-list',
   templateUrl: './node-list.component.html',
   styleUrls: ['./node-list.component.css']
 })
-export class NodeListComponent implements AfterViewInit {
-  dataSource = new MatTableDataSource();
-  displayedColumns = ['name', 'state', 'health', 'runningJobs'];
+export class NodeListComponent implements OnChanges {
+  @Input() nodes = [];
+  @Output() clickNode: EventEmitter<any> = new EventEmitter();
 
-  constructor(
-    private nodeService: NodeService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  private dataSource = new MatTableDataSource();
+  private displayedColumns = ['name', 'state', 'health', 'runningJobs'];
 
-  ngAfterViewInit() {
-    this.nodeService.getNodes().subscribe(nodes => this.dataSource.data = nodes);
+  constructor() {
+    this.dataSource.data = this.nodes;
   }
 
-  viewDetail(id): void {
-    this.router.navigate(["..", id], { relativeTo: this.route })
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.nodes)
+      this.dataSource.data = this.nodes;
   }
 
-  applyFilter(value: string): void {
-    this.dataSource.filter = value;
+  filter(text: string): void {
+    this.dataSource.filter = text;
+  }
+
+  clickRow(node): void {
+    this.clickNode.emit(node);
   }
 }

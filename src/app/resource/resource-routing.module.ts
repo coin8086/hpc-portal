@@ -8,12 +8,12 @@ import { NodeHeatmapComponent } from './node-heatmap/node-heatmap.component';
 const routes: Routes = [{
   path: '',
   component: ResourceComponent,
-  children: [
-    { path: 'nodes/heatmap', component: NodeHeatmapComponent },
-    { path: 'nodes/list', component: NodeListComponent },
-    { path: 'nodes/:id', component: NodeDetailComponent },
-    { path: '', redirectTo: 'nodes/list', pathMatch: 'full' },
-  ],
+  //children: [
+  //  { path: 'nodes/heatmap', component: NodeHeatmapComponent },
+  //  { path: 'nodes/list', component: NodeListComponent },
+  //  { path: 'nodes/:id', component: NodeDetailComponent },
+  //  { path: '', redirectTo: 'nodes/list', pathMatch: 'full' },
+  //],
 }];
 
 @NgModule({
