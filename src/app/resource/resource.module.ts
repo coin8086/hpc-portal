@@ -11,6 +11,7 @@ import { NodeDetailComponent } from './node-detail/node-detail.component';
 import { NodeHeatmapComponent } from './node-heatmap/node-heatmap.component';
 import { NodeService } from './node.service';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { ResourceMainComponent } from './resource-main/resource-main.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
     MaterialsModule,
     ChartModule,
   ],
-  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent],
+  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent, ResourceMainComponent],
   providers: [NodeService],
 })
 export class ResourceModule { }
