@@ -14,9 +14,7 @@ export class NodeListComponent implements OnChanges {
   private dataSource = new MatTableDataSource();
   private displayedColumns = ['name', 'state', 'health', 'runningJobs'];
 
-  constructor() {
-    this.dataSource.data = this.nodes;
-  }
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.nodes)
