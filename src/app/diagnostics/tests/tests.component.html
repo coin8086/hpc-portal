@@ -1,3 +1,9 @@
-<p>
-  tests works!
-</p>
+<tree-root [nodes]="tests">
+  <ng-template #treeNodeTemplate let-node let-index="index">
+    <mat-checkbox (change)="check(node, $event.checked)" [checked]="node.data.checked">
+      {{ node.data.name }}
+    </mat-checkbox>
+  </ng-template>
+</tree-root>
+
+<button mat-raised-button>Run</button>
