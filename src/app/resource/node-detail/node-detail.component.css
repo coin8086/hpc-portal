@@ -7,3 +7,7 @@ h2 a {
   border-top: 1px dashed;
   padding-top: 1em;
 }
+
+chart {
+  min-height: 150px;
+}
