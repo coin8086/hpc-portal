@@ -1,4 +1,4 @@
-class TestResult {
+class Result {
   testName: string;
   state: string;
   startedAt: number;

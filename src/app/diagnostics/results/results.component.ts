@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
-import { TestResult } from '../test-result';
+import { Result } from '../result';
 
 @Component({
   selector: 'diagnostics-results',
@@ -43,7 +43,7 @@ export class ResultsComponent {
     this.dataSource.data = this.results;
   }
 
-  viewDetail(result: TestResult): void {
+  viewDetail(result: Result): void {
     this.router.navigate([result.id], { relativeTo: this.route })
   }
 }
