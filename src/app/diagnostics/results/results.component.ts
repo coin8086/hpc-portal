@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { TestResult } from '../test-result';
 
@@ -15,6 +16,7 @@ export class ResultsComponent {
   private now = new Date().getTime();
   private results = [
     {
+      id: 1,
       testName: 'SOA Service Loading',
       state: 'running',
       progress: 0.6,
@@ -22,6 +24,7 @@ export class ResultsComponent {
       updatedAt: this.now,
     },
     {
+      id: 2,
       testName: 'MPI Latency',
       state: 'success',
       progress: 1.0,
@@ -30,12 +33,17 @@ export class ResultsComponent {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
 
   ngOnInit() {
     this.dataSource.data = this.results;
   }
 
   viewDetail(result: TestResult): void {
+    this.router.navigate([result.id], { relativeTo: this.route })
   }
 }
