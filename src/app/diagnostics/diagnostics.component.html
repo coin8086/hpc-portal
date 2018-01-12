@@ -1,5 +1,8 @@
 <nav *ngIf="showTabNav()" mat-tab-nav-bar>
-  <a mat-tab-link routerLink="./tests" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Tests</a>
-  <a mat-tab-link routerLink="./results" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">Results</a>
+  <a mat-tab-link
+		*ngFor="let tab of tabs"
+		[routerLink]="tab.path"
+		routerLinkActive #rla="routerLinkActive"
+		[active]="rla.isActive">{{tab.name}}</a>
 </nav>
 <router-outlet></router-outlet>

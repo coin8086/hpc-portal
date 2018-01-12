@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./diagnostics.component.css']
 })
 export class DiagnosticsComponent implements OnInit {
+  private const tabs = [
+    { path: 'tests', name: 'Tests' },
+    { path: 'command', name: 'Command' },
+    { path: 'results', name: 'Results' },
+  ];
 
   constructor(private router: Router) {}
 
@@ -14,6 +19,6 @@ export class DiagnosticsComponent implements OnInit {
   }
 
   showTabNav(): boolean {
-    return !!this.router.url.match(/ts$/);
+    return !this.router.url.match(/\d+$/);
   }
 }

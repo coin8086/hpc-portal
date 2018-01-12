@@ -31,6 +31,14 @@ export class ResultsComponent {
       startedAt: this.now - 1000 * 60 * 20,
       updatedAt: this.now - 1000 * 60 * 10,
     },
+    {
+      id: 3,
+      testName: 'Command',
+      state: 'success',
+      progress: 1.0,
+      startedAt: this.now - 1000 * 60 * 120,
+      updatedAt: this.now - 1000 * 60 * 110,
+    },
   ];
 
   constructor(

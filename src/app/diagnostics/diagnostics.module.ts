@@ -7,6 +7,7 @@ import { DiagnosticsComponent } from './diagnostics.component';
 import { TestsComponent } from './tests/tests.component';
 import { ResultsComponent } from './results/results.component';
 import { ResultComponent } from './result/result.component';
+import { CommandComponent } from './command/command.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ResultComponent } from './result/result.component';
     MaterialsModule,
     TreeModule,
   ],
-  declarations: [DiagnosticsComponent, TestsComponent, ResultsComponent, ResultComponent]
+  declarations: [DiagnosticsComponent, TestsComponent, ResultsComponent, ResultComponent, CommandComponent]
 })
 export class DiagnosticsModule { }
