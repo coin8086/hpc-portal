@@ -1,3 +1,35 @@
-<p>
-  results works!
-</p>
+<mat-table #table [dataSource]="dataSource">
+
+  <!--
+   Note that these columns can be defined in any order. The actual rendered
+   columns are set as a property on the row definition, displayedColumns."
+  -->
+
+  <ng-container matColumnDef="testName">
+    <mat-header-cell *matHeaderCellDef> Test Name </mat-header-cell>
+    <mat-cell *matCellDef="let result"> {{result.testName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="state">
+    <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+    <mat-cell *matCellDef="let result"> {{result.state | titlecase }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="progress">
+    <mat-header-cell *matHeaderCellDef> Progress </mat-header-cell>
+    <mat-cell *matCellDef="let result"> {{result.progress | percent}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="startedAt">
+    <mat-header-cell *matHeaderCellDef> Started At </mat-header-cell>
+    <mat-cell *matCellDef="let result"> {{result.startedAt | date:'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="updatedAt">
+    <mat-header-cell *matHeaderCellDef> Updated At </mat-header-cell>
+    <mat-cell *matCellDef="let result"> {{result.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let result; columns: displayedColumns;" (click)="viewDetail(result)"></mat-row>
+</mat-table>
