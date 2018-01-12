@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<StepResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" IsSummary="true" NodeName="Summary">
+  <Result>Success</Result>
+  <Message />
+  <ExceptionMessage />
+  <Nodes xsi:nil="true" />
+  <FailedNodes />
+  <Environment />
+  <Parameters />
+  <Tables>
+    <Table Description="This table shows the distribution of measured ping-pong latencies for all node-to-node communication links in the cluster." Name="Link Latency Histogram" Tags="">
+      <Columns>
+        <Column>Lower Bound (usecs)</Column>
+        <Column>Upper Bound (usecs)</Column>
+        <Column>Number of links measured within this interval</Column>
+      </Columns>
+      <Rows>
+        <Row>
+          <Items>
+            <RowItem>100.815</RowItem>
+            <RowItem>138.425</RowItem>
+            <RowItem>2</RowItem>
+          </Items>
+        </Row>
+        <Row>
+          <Items>
+            <RowItem>138.425</RowItem>
+            <RowItem>176.036</RowItem>
+            <RowItem>4</RowItem>
+          </Items>
+        </Row>
+      </Rows>
+    </Table>
+  </Tables>
+  <BulletPoints>
+    <Information>
+      <Type>Information</Type>
+      <Message>A "Warning" assessment indicates that at least one node is performing poorly relative to the other nodes in the cluster. A poorly performing node meets both of the following criteria:
+1. Average latency/throughput over all network links for the node is at least one standard deviation away from the mean value for the cluster.
+2. Latency is at least 20% higher or throughput is at least 20% lower than the cluster mean. This avoids unwarranted Warnings on highly uniform cluster networks.</Message>
+    </Information>
+    <Information>
+      <Type>Information</Type>
+      <Message>Average = 150.751 usecs</Message>
+    </Information>
+    <Information>
+      <Type>Information</Type>
+      <Message>Std Dev = 29.323 usecs</Message>
+    </Information>
+    <Information>
+      <Type>Information</Type>
+      <Message>Best Link = 100.815 usecs (IaaSCN000 &lt;-&gt; IaaSCN002)</Message>
+    </Information>
+    <Information>
+      <Type>Information</Type>
+      <Message>Worst Link = 176.036 usecs (IaaSCN001 &lt;-&gt; ref)</Message>
+    </Information>
+    <Information>
+      <Type>Information</Type>
+      <Message>Variability  = Moderate</Message>
+    </Information>
+    <Information>
+      <Type>Information</Type>
+      <Message>Packet size for determining latency: 4 Bytes</Message>
+    </Information>
+  </BulletPoints>
+  <ParentPath />
+</StepResult>

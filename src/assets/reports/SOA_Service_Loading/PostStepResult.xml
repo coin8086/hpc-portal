@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<StepResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" IsSummary="true" NodeName="Summary">
+  <Result>Success</Result>
+  <Message />
+  <ExceptionMessage />
+  <Nodes xsi:nil="true" />
+  <FailedNodes />
+  <Environment />
+  <Parameters />
+  <Tables>
+    <Table Description="" Name="Result Summary" Tags="">
+      <Columns>
+        <Column>Results</Column>
+        <Column>Number of Nodes</Column>
+      </Columns>
+      <Rows>
+        <Row>
+          <Items>
+            <RowItem>Success</RowItem>
+            <RowItem>4</RowItem>
+          </Items>
+        </Row>
+      </Rows>
+    </Table>
+  </Tables>
+  <BulletPoints />
+  <ParentPath />
+</StepResult>

@@ -1,0 +1,748 @@
+﻿<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Test result for MPI Ping-Pong: Latency</title>
+
+<script type="text/javascript"> 				
+var plusbutton  = '<div class="inButton" style="margin:0px 0px 0px 5px; height:5px; width:3px;"></div>';
+	plusbutton += '<div class="inButton" style="margin:0px 0px 0px 0px; height:3px; width:13px;"></div>';
+	plusbutton += '<div class="inbutton" style="margin:0px 0px 0px 5px; height:5px; width:3px;"></div>';
+
+var minusbutton = '<div class="inButton" style="padding:0px; margin:7px 1px 5px 1px; height:3px; width:11px;"></div>'; 
+
+function writeMinusButton(p){
+	document.write(minusbutton);
+} 	
+	
+function writePlusButton(){
+	document.write(plusbutton);
+} 
+	
+function togglevis(buttonname, divname){ 
+	var vis = document.getElementById(divname).style.display; 	
+	
+	if(vis == '') { 
+		document.getElementById(divname).style.display = 'none'; 
+		buttonname.innerHTML = plusbutton; 
+	} else if (vis == 'none') { 	
+		document.getElementById(divname).style.display = ''; 
+		buttonname.innerHTML = ""; 		
+		buttonname.innerHTML = minusbutton; 
+	} 				
+} 	
+
+function gototab2(){
+	document.getElementById('tab1').className='tabunselected';
+	document.getElementById('tab1content').style.display='none';
+	document.getElementById('tab2content').style.display='block';
+	document.getElementById('tab2').className='tabselected';
+
+}	
+
+function gototab1(){
+	document.getElementById('tab2').className='tabunselected';
+	document.getElementById('tab2content').style.display='none';
+	document.getElementById('tab1content').style.display='block';
+	document.getElementById('tab1').className='tabselected';
+
+}
+			
+</script>
+
+<style type="text/css">
+        h1
+        {
+            font-weight: normal;
+            font-size: 1.4em;
+            padding: 0px 0px 2px 4px;
+            margin: 0px;
+            color: #333333;
+        }
+        
+        h2
+        {
+            font-size: 1.3em;
+            color: #333333;
+            margin: 20px 0px 0px 0px;
+            font-weight: normal;
+            padding: 0px;
+        }
+        
+        h3
+        {
+            font-size: 1.1em;
+            color: #333333;
+            margin: 20px 0px 0px 0px;
+            font-weight: normal;
+            padding: 0px;
+        }
+        
+        h3 img
+        {
+            border: 0px;
+            padding: 0px;
+            margin: 0px 10px 0px 3px;
+            cursor: hand;
+            background-color: transparent;
+        }
+        
+        h4
+        {
+            font-size: 1em;
+            color: #555555;
+            margin: 8px 0px 3px 0px;
+        }
+        
+        h5
+        {
+            color: #666666;
+            margin: 0px;
+            padding: 0px;
+            font-weight: normal;
+            font-size: 1em;
+        }
+        
+        pre
+        {
+            font-family: tahoma, "segoe ui" , verdana, sans-serif;
+            border: 0px;
+            margin: 5px 0px 0px 0px;
+            padding: 0px;
+        }
+        
+        hr
+        {
+            margin: 0px;
+            padding: 0px;
+            color: #eeeeee;
+        }
+        
+        ul
+        {
+            margin: 0px 20px;
+        }
+        
+        ul li
+        {
+            margin: 3px 0px;
+            color: #444444;
+            font-size: 1em;
+        }
+        
+        a, a:link, a:visited, a:active
+        {
+            color: #555555;
+        }
+        
+        a:hover
+        {
+            color: #111111;
+        }
+        
+        /* Section headers */
+        
+        #header
+        {
+            margin-bottom: 15px;
+            display: block;
+            padding: 0px;
+        }
+        
+        #header td
+        {
+            padding: 5px 10px;
+            font-size: 1em;
+        }
+        
+        #topresults
+        {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        
+        /* Colored Results */
+        
+        .detail
+        {
+            vertical-align: middle;
+            font-size: .8em;
+            color: #666666;
+            font-weight: normal;
+            display: inline;
+            margin: 0px 0px 0px 10px;
+        }
+        
+        #textgreen
+        {
+            color: #22aa22;
+        }
+        
+        #textred
+        {
+            color: #cc2222;
+        }
+        
+        #textyellow
+        {
+            color: #dd6600;
+        }
+        
+        #topresults #green
+        {
+            background-color: #eeffee;
+            color: #118811;
+        }
+        
+        #topresults #red
+        {
+            background-color: #ffeeee;
+            color: #bb1111;
+        }
+        
+        #topresults #yellow
+        {
+            background-color: #ffffcc;
+            color: #cc4400;
+        }
+        
+        /* Summary Results Messages */
+        #topresults h2, #topresults h3, .nodediv h2, .nodediv h3
+        {
+            background-color: #eeeeee;
+            color: #333333;
+            padding: 5px 8px;
+            margin: 2px;
+            font-size: 1.1em;
+        }
+        
+        /* Expand Collapse divs */
+        #nodediv, #detailsdiv, #otherdiv, .nodediv
+        {
+            display: block;
+            margin: 0px 0px 0px 26px;
+            font-size: 1em;
+        }
+        
+        #detailsdiv table, .nodediv table
+        {
+            font-size: 1em;
+        }
+        
+        #nodesdiv ul
+        {
+            margin: 0px 0px 0px 45px;
+        }
+        
+        
+        /* Buttons */
+        .button
+        {
+            padding: 2px;
+            border: 1px solid #cccccc;
+            float: left;
+            margin: 0px 8px 0px 0px;
+            width: 10px;
+            background-color: #eeeeee;
+            cursor: hand;
+        }
+        
+        .inButton
+        {
+            background-color: #888888;
+            padding: 0px;
+            font-size: 0px;
+        }
+
+        *
+        {
+            font-family: tahoma, "segoe ui" , verdana, sans-serif;
+            font-size: 13px;
+            color: #111111;
+        }
+        
+        body
+        {
+            padding: 20px;
+            margin: 0px;
+        }
+        
+        /* Table Grids */
+        .grid
+        {
+            border-top: 1px solid #dddddd;
+            border-left: 1px solid #dddddd;
+            padding: 0px;
+            margin: 8px 0px 0px 5px;
+        }
+        
+        .grid td
+        {
+            border-right: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
+            padding: 7px;
+        }
+        
+        .grid .colheader
+        {
+            background-color: #eeeeee;
+            font-size: 1.05em;
+            padding: 4px 12px 4px 8px;
+        }
+        
+        
+        /* Top Section */
+        .topsection
+        {
+            padding: 8px 8px 0px 0px;
+        }
+        
+        .topsection .grid
+        {
+            margin: 8px 0px 0px 0px;
+            width: 100%;
+        }
+        
+        
+        /* Expand Collapse "Report Section" divs */
+        .reportsection
+        {
+            display: block;
+            margin: 0px 0px 0px 35px;
+            padding: 0px 0px 10px 0px;
+        }
+        
+        .reportsection p
+        {
+            display: block;
+            padding: 4px;
+            margin: 2px 2px 2px 0px;
+            width: 800px;
+        }
+        
+        .reportheader p
+        {
+            vertical-align: middle;
+            display: inline;
+            margin: 0px 0px 0px 10px;
+            padding: 4px 4px 6px 4px;
+        }
+        
+        
+        /* Colored Results */
+        .green
+        {
+            background-color: #eeffee;
+            color: #118811;
+        }
+        
+        .red
+        {
+            background-color: #ffeeee;
+            color: #bb1111;
+        }
+        
+        .yellow
+        {
+            background-color: #ffffcc;
+            color: #cc4400;
+        }
+        
+        .redCell
+        {
+            background-color: #ffeeee;
+            color: #bb1111;
+            font-weight: bold;
+        }
+        
+        .yellowCell
+        {
+            background-color: #ffffcc;
+            color: #cc4400;
+            font-weight: bold;
+        }
+        
+        .gray
+        {
+            background-color: #f6f6f6;
+            color: #333333;
+        }
+        
+        .highlight
+        {
+            background-color: #ffffcc;
+        }
+        
+        .highlightRow
+        {
+            background-color: #ffffcc;
+        }
+        
+        .highlightCell
+        {
+            color: #ff0000;
+        }
+        
+        .highlightColumn
+        {
+            font-weight: bold;
+        }
+        
+        .rowlines
+        {
+            background-color: #cccccc;
+        }
+        
+        .evenLine
+        {
+            background-color: #f8fff8;
+        }
+        
+        /* Tabs */
+        .tabcontainer
+        {
+            margin: 30px 0px 30px -16px;
+            table-layout: fixed;
+        }
+        
+        .tabcontainer td
+        {
+            border-style: solid;
+            border-color: #666666;
+            border-width: 2px;
+            font-size: 1.2em;
+            padding: 4px 8px 8px 8px;
+        }
+        
+        .tabcontainer .tabselected
+        {
+            background-color: #ffffff;
+            color: #222222;
+            border-bottom: 0px;
+        }
+        
+        .tabcontainer .tabunselected
+        {
+            border-width: 2px;
+            background-color: #eeeeee;
+            color: #444444;
+            cursor: select;
+        }
+        
+        .tabcontainer .tabspace
+        {
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            width: 8px;
+            font-size: 0em;
+        }
+        
+        #tab1, #tab2
+        {
+            width: 300px;
+            cursor: pointer;
+        }
+</style>   
+
+</head>
+<body>
+<h1>MPI Ping-Pong: Latency</h1>
+
+<div id="topresults">
+<h2 id=green> Test Result: Success</h2>
+</div>
+<h3>
+<div onclick="togglevis(this, 'SummaryFailedNodes_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>
+Failed nodes list <p class="detail">(0)</p>
+    </h3>
+    <hr>
+    <div id="SummaryFailedNodes_div" class="nodediv">
+      <ul>
+No nodes failed this test.
+      </ul>
+    </div>
+<h3>
+<div onclick="togglevis(this, 'SummaryDetailedLinkName_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>
+Test result details
+    </h3>
+    <hr>
+    <div id="SummaryDetailedLinkName_div" class="nodediv">
+
+	<h4>Link Latency Histogram</h4>
+	<h5>This table shows the distribution of measured ping-pong latencies for all node-to-node communication links in the cluster.</h5>
+<div class="reportsection" id="" >
+<table class="grid" border="0" cellpadding="5" cellspacing="0">
+		<colgroup>
+			<col >
+<col >
+<col >
+
+		</colgroup>
+		<tr>                 
+			<td class="colheader">Lower Bound (usecs)</td>
+<td class="colheader">Upper Bound (usecs)</td>
+<td class="colheader">Number of links measured within this interval</td>
+
+		</tr>
+		<tr>
+		<td >100.815</td>
+<td >138.425</td>
+<td >2</td>
+
+		</tr>
+<tr>
+		<td >138.425</td>
+<td >176.036</td>
+<td >4</td>
+
+		</tr>
+<tr><td colspan="100" class="rowlines" height ="2"></td></tr>
+
+		</table>
+	</div>
+
+
+    </div>
+<h3>
+<div onclick="togglevis(this, 'SummaryOthers_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>
+Other information 
+    </h3>
+    <hr>
+    <div id="SummaryOthers_div" class="nodediv">
+      <h4>Information</h4>
+      <ul>
+        <li>A "Warning" assessment indicates that at least one node is performing poorly relative to the other nodes in the cluster. A poorly performing node meets both of the following criteria:
+1. Average latency/throughput over all network links for the node is at least one standard deviation away from the mean value for the cluster.
+2. Latency is at least 20% higher or throughput is at least 20% lower than the cluster mean. This avoids unwarranted Warnings on highly uniform cluster networks.</li>
+      </ul>
+      <br>
+
+      <h4>Information</h4>
+      <ul>
+        <li>Average = 150.751 usecs</li>
+      </ul>
+      <br>
+
+      <h4>Information</h4>
+      <ul>
+        <li>Std Dev = 29.323 usecs</li>
+      </ul>
+      <br>
+
+      <h4>Information</h4>
+      <ul>
+        <li>Best Link = 100.815 usecs (IaaSCN000 <-> IaaSCN002)</li>
+      </ul>
+      <br>
+
+      <h4>Information</h4>
+      <ul>
+        <li>Worst Link = 176.036 usecs (IaaSCN001 <-> ref)</li>
+      </ul>
+      <br>
+
+      <h4>Information</h4>
+      <ul>
+        <li>Variability  = Moderate</li>
+      </ul>
+      <br>
+
+      <h4>Information</h4>
+      <ul>
+        <li>Packet size for determining latency: 4 Bytes</li>
+      </ul>
+      <br>
+
+
+</div>
+<br>
+
+<div id="topresults">
+                <h3>Test results by node</h3>
+            </div>
+            <h3 class="reportheader" id="_IaaSCN000">
+<div onclick="togglevis(this, '_IaaSCN000_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>		IaaSCN000<p class="green">(Success)</p>
+	</h3>
+<hr>
+	<div id="_IaaSCN000_div" class="reportsection" >
+        
+		<p></p>
+		
+	<h4>Worst Performing Link For This Node</h4>
+	<h5>This table shows the link with the worst latency for this node.</h5>
+<div class="reportsection" id="" >
+<table class="grid" border="0" cellpadding="5" cellspacing="0">
+		<colgroup>
+			<col >
+<col >
+<col >
+
+		</colgroup>
+		<tr>                 
+			<td class="colheader">Ping Node</td>
+<td class="colheader">Pong Node</td>
+<td class="colheader">Latency (usecs)</td>
+
+		</tr>
+		<tr>
+		<td >IaaSCN000</td>
+<td >IaaSCN001</td>
+<td >162.332</td>
+
+		</tr>
+
+		</table>
+	</div>
+
+
+		
+		
+	<br>
+	<a href="#_IaaSCN000">back to top</a>
+	</div>
+	<br>
+
+<h3 class="reportheader" id="_IaaSCN001">
+<div onclick="togglevis(this, '_IaaSCN001_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>		IaaSCN001<p class="green">(Success)</p>
+	</h3>
+<hr>
+	<div id="_IaaSCN001_div" class="reportsection" >
+        
+		<p></p>
+		
+	<h4>Worst Performing Link For This Node</h4>
+	<h5>This table shows the link with the worst latency for this node.</h5>
+<div class="reportsection" id="" >
+<table class="grid" border="0" cellpadding="5" cellspacing="0">
+		<colgroup>
+			<col >
+<col >
+<col >
+
+		</colgroup>
+		<tr>                 
+			<td class="colheader">Ping Node</td>
+<td class="colheader">Pong Node</td>
+<td class="colheader">Latency (usecs)</td>
+
+		</tr>
+		<tr>
+		<td >IaaSCN001</td>
+<td >ref</td>
+<td >176.036</td>
+
+		</tr>
+
+		</table>
+	</div>
+
+
+		
+		
+	<br>
+	<a href="#_IaaSCN001">back to top</a>
+	</div>
+	<br>
+
+<h3 class="reportheader" id="_IaaSCN002">
+<div onclick="togglevis(this, '_IaaSCN002_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>		IaaSCN002<p class="green">(Success)</p>
+	</h3>
+<hr>
+	<div id="_IaaSCN002_div" class="reportsection" >
+        
+		<p></p>
+		
+	<h4>Worst Performing Link For This Node</h4>
+	<h5>This table shows the link with the worst latency for this node.</h5>
+<div class="reportsection" id="" >
+<table class="grid" border="0" cellpadding="5" cellspacing="0">
+		<colgroup>
+			<col >
+<col >
+<col >
+
+		</colgroup>
+		<tr>                 
+			<td class="colheader">Ping Node</td>
+<td class="colheader">Pong Node</td>
+<td class="colheader">Latency (usecs)</td>
+
+		</tr>
+		<tr>
+		<td >IaaSCN001</td>
+<td >IaaSCN002</td>
+<td >175.866</td>
+
+		</tr>
+
+		</table>
+	</div>
+
+
+		
+		
+	<br>
+	<a href="#_IaaSCN002">back to top</a>
+	</div>
+	<br>
+
+<h3 class="reportheader" id="_ref">
+<div onclick="togglevis(this, '_ref_div');" class="button">
+			<script type="text/javascript">document.write(minusbutton);</script>
+		</div>		ref<p class="green">(Success)</p>
+	</h3>
+<hr>
+	<div id="_ref_div" class="reportsection" >
+        
+		<p></p>
+		
+	<h4>Worst Performing Link For This Node</h4>
+	<h5>This table shows the link with the worst latency for this node.</h5>
+<div class="reportsection" id="" >
+<table class="grid" border="0" cellpadding="5" cellspacing="0">
+		<colgroup>
+			<col >
+<col >
+<col >
+
+		</colgroup>
+		<tr>                 
+			<td class="colheader">Ping Node</td>
+<td class="colheader">Pong Node</td>
+<td class="colheader">Latency (usecs)</td>
+
+		</tr>
+		<tr>
+		<td >IaaSCN001</td>
+<td >ref</td>
+<td >176.036</td>
+
+		</tr>
+
+		</table>
+	</div>
+
+
+		
+		
+	<br>
+	<a href="#_ref">back to top</a>
+	</div>
+	<br>
+
+
+</body>
+</html>
