@@ -5,10 +5,10 @@ import { Result } from '../result';
 
 @Component({
   selector: 'diagnostics-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css']
+  templateUrl: './result-list.component.html',
+  styleUrls: ['./result-list.component.css']
 })
-export class ResultsComponent {
+export class ResultListComponent {
 
   private dataSource = new MatTableDataSource();
   private displayedColumns = ['testName', 'state', 'progress', 'startedAt', 'updatedAt'];

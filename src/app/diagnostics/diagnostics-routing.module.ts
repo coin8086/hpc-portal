@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DiagnosticsComponent } from './diagnostics.component';
 import { TestNewComponent } from './test-new/test-new.component';
-import { ResultsComponent } from './results/results.component';
+import { ResultListComponent } from './result-list/result-list.component';
 import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [{
@@ -10,7 +10,7 @@ const routes: Routes = [{
   component: DiagnosticsComponent,
   children: [
     { path: 'tests', component: TestNewComponent },
-    { path: 'results', component: ResultsComponent },
+    { path: 'results', component: ResultListComponent },
     { path: 'results/:id', component: ResultComponent },
     { path: '', redirectTo: 'tests', pathMatch: 'full' },
   ],
