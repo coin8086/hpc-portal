@@ -1,0 +1,94 @@
+ref -> Finished
+------------------------------------------------------------------------------------------------------------------------
+ Volume in drive C has no label.
+ Volume Serial Number is 6C15-D365
+
+ Directory of C:\Users\hpcadmin
+
+01/04/2018  01:50 AM    <DIR>          .
+01/04/2018  01:50 AM    <DIR>          ..
+01/04/2018  01:50 AM    <DIR>          Contacts
+01/04/2018  01:50 AM    <DIR>          Desktop
+01/12/2018  07:30 AM    <DIR>          Documents
+01/04/2018  01:50 AM    <DIR>          Downloads
+01/04/2018  01:50 AM    <DIR>          Favorites
+01/04/2018  01:50 AM    <DIR>          Links
+01/04/2018  01:50 AM    <DIR>          Music
+01/04/2018  01:50 AM    <DIR>          Pictures
+01/04/2018  01:50 AM    <DIR>          Saved Games
+01/04/2018  01:50 AM    <DIR>          Searches
+01/04/2018  01:50 AM    <DIR>          Videos
+               0 File(s)              0 bytes
+              13 Dir(s)  107,968,028,672 bytes free
+
+------------------------------------------------------------------------------------------------------------------------
+
+IaaSCN000 -> Finished
+------------------------------------------------------------------------------------------------------------------------
+ Volume in drive C has no label.
+ Volume Serial Number is 50AF-62E1
+
+ Directory of C:\Users\hpcadmin
+
+01/04/2018  06:35 AM    <DIR>          .
+01/04/2018  06:35 AM    <DIR>          ..
+08/22/2013  03:39 PM    <DIR>          Desktop
+01/04/2018  06:35 AM    <DIR>          Documents
+08/22/2013  03:39 PM    <DIR>          Downloads
+08/22/2013  03:39 PM    <DIR>          Favorites
+08/22/2013  03:39 PM    <DIR>          Links
+08/22/2013  03:39 PM    <DIR>          Music
+08/22/2013  03:39 PM    <DIR>          Pictures
+08/22/2013  03:39 PM    <DIR>          Saved Games
+08/22/2013  03:39 PM    <DIR>          Videos
+               0 File(s)              0 bytes
+              11 Dir(s)  121,243,725,824 bytes free
+
+------------------------------------------------------------------------------------------------------------------------
+
+IaaSCN001 -> Finished
+------------------------------------------------------------------------------------------------------------------------
+ Volume in drive C has no label.
+ Volume Serial Number is 50AF-62E1
+
+ Directory of C:\Users\hpcadmin
+
+01/04/2018  06:35 AM    <DIR>          .
+01/04/2018  06:35 AM    <DIR>          ..
+08/22/2013  03:39 PM    <DIR>          Desktop
+01/04/2018  06:35 AM    <DIR>          Documents
+08/22/2013  03:39 PM    <DIR>          Downloads
+08/22/2013  03:39 PM    <DIR>          Favorites
+08/22/2013  03:39 PM    <DIR>          Links
+08/22/2013  03:39 PM    <DIR>          Music
+08/22/2013  03:39 PM    <DIR>          Pictures
+08/22/2013  03:39 PM    <DIR>          Saved Games
+08/22/2013  03:39 PM    <DIR>          Videos
+               0 File(s)              0 bytes
+              11 Dir(s)  121,242,206,208 bytes free
+
+------------------------------------------------------------------------------------------------------------------------
+
+IaaSCN002 -> Finished
+------------------------------------------------------------------------------------------------------------------------
+ Volume in drive C has no label.
+ Volume Serial Number is 50AF-62E1
+
+ Directory of C:\Users\hpcadmin
+
+01/04/2018  06:35 AM    <DIR>          .
+01/04/2018  06:35 AM    <DIR>          ..
+08/22/2013  03:39 PM    <DIR>          Desktop
+01/04/2018  06:35 AM    <DIR>          Documents
+08/22/2013  03:39 PM    <DIR>          Downloads
+08/22/2013  03:39 PM    <DIR>          Favorites
+08/22/2013  03:39 PM    <DIR>          Links
+08/22/2013  03:39 PM    <DIR>          Music
+08/22/2013  03:39 PM    <DIR>          Pictures
+08/22/2013  03:39 PM    <DIR>          Saved Games
+08/22/2013  03:39 PM    <DIR>          Videos
+               0 File(s)              0 bytes
+              11 Dir(s)  121,331,892,224 bytes free
+
+------------------------------------------------------------------------------------------------------------------------
+

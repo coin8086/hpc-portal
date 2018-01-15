@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommandComponent } from './command.component';
 import { CommandNewComponent } from './command-new/command-new.component';
 import { ResultListComponent } from './result-list/result-list.component';
+import { ResultDetailComponent } from './result-detail/result-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,7 @@ const routes: Routes = [{
   children: [
     { path: 'new', component: CommandNewComponent },
     { path: 'results', component: ResultListComponent },
+    { path: 'results/:id', component: ResultDetailComponent },
     { path: '', redirectTo: 'new', pathMatch: 'full' },
   ],
 }];

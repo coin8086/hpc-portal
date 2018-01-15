@@ -1,0 +1,12 @@
+.mat-column-progress {
+  flex: 0.5;
+}
+
+.mat-column-state {
+  flex: 0.5;
+}
+
+mat-row:hover {
+  cursor: pointer;
+}
+
