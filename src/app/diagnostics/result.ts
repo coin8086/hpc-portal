@@ -1,4 +1,5 @@
-class Result {
+export class Result {
+  id: number;
   testName: string;
   state: string;
   startedAt: number;
