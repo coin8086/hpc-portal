@@ -4,7 +4,7 @@ import { MaterialsModule } from '../materials.module';
 import { TreeModule } from 'angular-tree-component';
 import { DiagnosticsRoutingModule } from './diagnostics-routing.module';
 import { DiagnosticsComponent } from './diagnostics.component';
-import { TestsComponent } from './tests/tests.component';
+import { TestNewComponent } from './test-new/test-new.component';
 import { ResultsComponent } from './results/results.component';
 import { ResultComponent } from './result/result.component';
 
@@ -15,6 +15,6 @@ import { ResultComponent } from './result/result.component';
     MaterialsModule,
     TreeModule,
   ],
-  declarations: [DiagnosticsComponent, TestsComponent, ResultsComponent, ResultComponent]
+  declarations: [DiagnosticsComponent, TestNewComponent, ResultsComponent, ResultComponent]
 })
 export class DiagnosticsModule { }

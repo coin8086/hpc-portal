@@ -3,10 +3,10 @@ import { TreeComponent } from 'angular-tree-component';
 
 @Component({
   selector: 'diagnostics-tests',
-  templateUrl: './tests.component.html',
-  styleUrls: ['./tests.component.css']
+  templateUrl: './test-new.component.html',
+  styleUrls: ['./test-new.component.css']
 })
-export class TestsComponent implements OnInit {
+export class TestNewComponent implements OnInit {
   @ViewChild(TreeComponent)
   private tree: TreeComponent;
 
