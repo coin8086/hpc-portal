@@ -9,10 +9,10 @@ const routes: Routes = [{
   path: '',
   component: DiagnosticsComponent,
   children: [
-    { path: 'tests', component: TestNewComponent },
+    { path: 'new', component: TestNewComponent },
     { path: 'results', component: ResultListComponent },
     { path: 'results/:id', component: ResultDetailComponent },
-    { path: '', redirectTo: 'tests', pathMatch: 'full' },
+    { path: '', redirectTo: 'new', pathMatch: 'full' },
   ],
 }];
 
