@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./diagnostics.component.css']
 })
 export class DiagnosticsComponent implements OnInit {
-  private const tabs = [
+  private tabs = [
     { path: 'tests', name: 'Tests' },
     { path: 'command', name: 'Command' },
     { path: 'results', name: 'Results' },
