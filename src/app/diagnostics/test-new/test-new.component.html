@@ -1,7 +1,7 @@
 <tree-root [nodes]="tests">
   <ng-template #treeNodeTemplate let-node let-index="index">
     <mat-checkbox (change)="check(node, $event.checked)" [checked]="node.data.checked">
-      {{ node.data.name }}
+      <span [matTooltip]="node.data.description" matTooltipPosition="right">{{node.data.name}}</span>
     </mat-checkbox>
   </ng-template>
 </tree-root>

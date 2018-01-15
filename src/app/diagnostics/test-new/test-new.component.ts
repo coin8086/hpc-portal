@@ -17,7 +17,8 @@ export class TestNewComponent implements OnInit {
         name: 'SOA',
         children: [
           {
-            name: 'Service Loading'
+            name: 'Service Loading',
+            description: 'Verify that SOA service is OK.',
           }
         ]
       },
@@ -25,13 +26,16 @@ export class TestNewComponent implements OnInit {
         name: 'MPI',
         children: [
           {
-            name: 'Latency'
+            name: 'Latency',
+            description: 'Measure network Latency between each pair of nodes.',
           },
           {
-            name: 'Throughput'
+            name: 'Throughput',
+            description: 'Measure Throughput among nodes. May take a long time.',
           },
           {
-            name: 'Simple Throughput'
+            name: 'Simple Throughput',
+            description: 'Measure Throughput only between pairs of adjacent nodes.',
           }
         ]
       },

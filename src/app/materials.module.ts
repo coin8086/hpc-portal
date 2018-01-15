@@ -10,6 +10,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
+  MatTooltipModule
 } from '@angular/material';
 
 const modules = [
@@ -23,6 +24,7 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
+  MatTooltipModule
 ];
 
 @NgModule({
