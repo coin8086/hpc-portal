@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class DiagnosticsComponent implements OnInit {
   private tabs = [
     { path: 'tests', name: 'Tests' },
-    { path: 'command', name: 'Command' },
     { path: 'results', name: 'Results' },
   ];
 
