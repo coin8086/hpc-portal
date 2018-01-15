@@ -4,10 +4,10 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-result',
-  templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  templateUrl: './result-detail.component.html',
+  styleUrls: ['./result-detail.component.css']
 })
-export class ResultComponent implements OnInit {
+export class ResultDetailComponent implements OnInit {
   private id: number;
 
   constructor(
