@@ -17,8 +17,14 @@ export class TestNewComponent implements OnInit {
         name: 'SOA',
         children: [
           {
-            name: 'Service Loading',
+            name: 'SOA Service Loading',
             description: 'Verify that SOA service is OK.',
+            parameters: [
+              {
+                name: 'Service Name',
+                defaultValue: 'CcpEchoSvc',
+              }
+            ],
           }
         ]
       },
@@ -26,21 +32,36 @@ export class TestNewComponent implements OnInit {
         name: 'MPI',
         children: [
           {
-            name: 'Latency',
+            name: 'MPI Latency',
             description: 'Measure network Latency between each pair of nodes.',
+            parameters: [
+              {
+                name: 'Network',
+                options: ['Default', 'Private', 'Enterprise', 'Application'],
+                defaultValue: 'Default',
+              },
+              {
+                name: 'Running Mode',
+                options: ['ring', 'serial', 'tournament'],
+                defaultValue: 'tournament',
+              },
+            ],
           },
           {
-            name: 'Throughput',
+            name: 'MPI Throughput',
             description: 'Measure Throughput among nodes. May take a long time.',
           },
           {
-            name: 'Simple Throughput',
+            name: 'MPI Simple Throughput',
             description: 'Measure Throughput only between pairs of adjacent nodes.',
           }
         ]
       },
     ]
   }];
+
+  private selectedTests = [];
+  private selectedTestsWithParameters = []
 
   constructor() { }
 
@@ -90,5 +111,23 @@ export class TestNewComponent implements OnInit {
       node.data.indeterminate = true;
     }
     this.updateParentNodeCheckbox(node.parent);
+  }
+
+	private getSelectedTests(node: any): string[] {
+    if (!node.checked) {
+      return [];
+    }
+    let array = [];
+    if (node.children) {
+      for (let i = 0; i < node.children.length; i++) {
+        array = array.concat(this.getSelectedTests(node.children[i]));
+      }
+    }
+    return array.length > 0 ? array : [node];
+	}
+
+  private selectTests(): void {
+    this.selectedTests = this.getSelectedTests(this.tests[0]);
+    this.selectedTestsWithParameters = this.selectedTests.filter(test => test.parameters);
   }
 }
