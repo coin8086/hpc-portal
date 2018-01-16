@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { TreeComponent } from 'angular-tree-component';
+import { NodeFilterBuilderComponent } from '../../node-filter-builder/node-filter-builder.component';
 
 @Component({
   selector: 'diagnostics-tests',
@@ -62,8 +64,9 @@ export class TestNewComponent implements OnInit {
 
   private selectedTests = [];
   private selectedTestsWithParameters = []
+  private nodeFilter: string = '';
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     setTimeout(() => this.tree.treeModel.expandAll(), 0);
@@ -113,7 +116,7 @@ export class TestNewComponent implements OnInit {
     this.updateParentNodeCheckbox(node.parent);
   }
 
-	private getSelectedTests(node: any): string[] {
+  private getSelectedTests(node: any): string[] {
     if (!node.checked) {
       return [];
     }
@@ -124,10 +127,22 @@ export class TestNewComponent implements OnInit {
       }
     }
     return array.length > 0 ? array : [node];
-	}
+  }
 
   private selectTests(): void {
     this.selectedTests = this.getSelectedTests(this.tests[0]);
     this.selectedTestsWithParameters = this.selectedTests.filter(test => test.parameters);
+  }
+
+  private openFilterBuilder(): void {
+    let dialogRef = this.dialog.open(NodeFilterBuilderComponent, {
+      //width: '250px',
+      data: { filter: this.nodeFilter }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== false)
+        this.nodeFilter = result;
+    });
   }
 }

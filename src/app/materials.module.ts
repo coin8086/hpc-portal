@@ -10,10 +10,11 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
-	MatRadioModule,
+  MatRadioModule,
   MatSelectModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MatDialogModule
 } from '@angular/material';
 
 const modules = [
@@ -27,10 +28,11 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
-	MatRadioModule,
+  MatRadioModule,
   MatSelectModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MatDialogModule
 ];
 
 @NgModule({
