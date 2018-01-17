@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 import { MaterialsModule } from '../materials.module';
-import { NodeFilterBuilderComponent } from '../node-filter-builder/node-filter-builder.component';
+import { WidgetsModule } from '../widgets/widgets.module';
 import { TreeModule } from 'angular-tree-component';
 import { DiagnosticsRoutingModule } from './diagnostics-routing.module';
 import { DiagnosticsComponent } from './diagnostics.component';
@@ -15,10 +15,10 @@ import { ResultDetailComponent } from './result-detail/result-detail.component';
     CommonModule,
     DiagnosticsRoutingModule,
     MaterialsModule,
+    WidgetsModule,
     TreeModule,
     FormsModule,
   ],
-  entryComponents: [NodeFilterBuilderComponent],
-  declarations: [NodeFilterBuilderComponent, DiagnosticsComponent, TestNewComponent, ResultListComponent, ResultDetailComponent]
+  declarations: [DiagnosticsComponent, TestNewComponent, ResultListComponent, ResultDetailComponent]
 })
 export class DiagnosticsModule { }
