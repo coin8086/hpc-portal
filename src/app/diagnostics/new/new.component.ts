@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TreeComponent } from 'angular-tree-component';
 import { NodeFilterBuilderComponent } from '../../widgets/node-filter-builder/node-filter-builder.component';
 

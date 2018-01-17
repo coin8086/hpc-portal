@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'
 import { MaterialsModule } from '../materials.module';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { CommandRoutingModule } from './command-routing.module';
@@ -14,6 +15,7 @@ import { ResultDetailComponent } from './result-detail/result-detail.component';
     CommandRoutingModule,
     MaterialsModule,
     WidgetsModule,
+    FormsModule,
   ],
   declarations: [CommandComponent, NewComponent, ResultListComponent, ResultDetailComponent]
 })

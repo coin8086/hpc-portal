@@ -1,8 +1,29 @@
 <app-back-button></app-back-button>
 
-<form>
-  <mat-form-field class="cmd-line">
-    <input matInput placeholder="Your command here" value="">
-  </mat-form-field>
-  <button mat-raised-button>Run</button>
-</form>
+<mat-vertical-stepper linear="true">
+  <mat-step label="Enter command">
+    <form>
+      <mat-form-field class="cmd-line">
+        <input matInput placeholder="Your command here" value="">
+      </mat-form-field>
+    </form>
+    <div>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Select nodes to run on">
+    <mat-radio-group>
+      <mat-radio-button value="all" checked="true">All</mat-radio-button>
+      <mat-radio-button value="filter" #filter>
+        <mat-form-field class="filter">
+          <input matInput placeholder="Filter" (focus)="filter.checked = true" [(ngModel)]="nodeFilter">
+        </mat-form-field>
+        <button mat-raised-button (focus)="filter.checked = true" (click)="openFilterBuilder()">Build Filter...</button>
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Run</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
