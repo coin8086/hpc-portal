@@ -6,7 +6,7 @@ import { WidgetsModule } from '../widgets/widgets.module';
 import { TreeModule } from 'angular-tree-component';
 import { DiagnosticsRoutingModule } from './diagnostics-routing.module';
 import { DiagnosticsComponent } from './diagnostics.component';
-import { TestNewComponent } from './test-new/test-new.component';
+import { NewComponent } from './new/new.component';
 import { ResultListComponent } from './result-list/result-list.component';
 import { ResultDetailComponent } from './result-detail/result-detail.component';
 
@@ -19,6 +19,6 @@ import { ResultDetailComponent } from './result-detail/result-detail.component';
     TreeModule,
     FormsModule,
   ],
-  declarations: [DiagnosticsComponent, TestNewComponent, ResultListComponent, ResultDetailComponent]
+  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent]
 })
 export class DiagnosticsModule { }

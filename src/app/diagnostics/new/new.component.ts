@@ -5,10 +5,10 @@ import { NodeFilterBuilderComponent } from '../../widgets/node-filter-builder/no
 
 @Component({
   selector: 'diagnostics-tests',
-  templateUrl: './test-new.component.html',
-  styleUrls: ['./test-new.component.css']
+  templateUrl: './new.component.html',
+  styleUrls: ['./new.component.css']
 })
-export class TestNewComponent implements OnInit {
+export class NewComponent implements OnInit {
   @ViewChild(TreeComponent)
   private tree: TreeComponent;
 
