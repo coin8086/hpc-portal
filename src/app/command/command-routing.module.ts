@@ -12,7 +12,7 @@ const routes: Routes = [{
     { path: 'new', component: CommandNewComponent },
     { path: 'results', component: ResultListComponent },
     { path: 'results/:id', component: ResultDetailComponent },
-    { path: '', redirectTo: 'new', pathMatch: 'full' },
+    { path: '', redirectTo: 'results', pathMatch: 'full' },
   ],
 }];
 

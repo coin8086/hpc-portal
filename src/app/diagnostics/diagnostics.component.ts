@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diagnostics',
@@ -7,17 +6,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./diagnostics.component.css']
 })
 export class DiagnosticsComponent implements OnInit {
-  private tabs = [
-    { path: 'new', name: 'New Test' },
-    { path: 'results', name: 'Results' },
-  ];
-
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit() {
-  }
-
-  showTabNav(): boolean {
-    return !this.router.url.match(/\d+$/);
   }
 }

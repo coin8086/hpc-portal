@@ -1,3 +1,11 @@
+app-back-button {
+  float: right;
+}
+
+form {
+  clear: both;
+}
+
 .cmd-line {
   width: 100%;
 }

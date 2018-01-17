@@ -1,3 +1,11 @@
+app-back-button {
+  float: right;
+}
+
+mat-vertical-stepper {
+  clear: both;
+}
+
 mat-radio-group {
   display: flex;
   flex-direction: column;
