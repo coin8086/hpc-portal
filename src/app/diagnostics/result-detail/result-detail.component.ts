@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-result',
@@ -12,14 +11,9 @@ export class ResultDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location
   ) {}
 
   ngOnInit() {
     this.id = + this.route.snapshot.paramMap.get('id');
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }

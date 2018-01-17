@@ -5,6 +5,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ChartModule } from 'angular2-chartjs';
 import { ResourceRoutingModule } from './resource-routing.module';
 import { MaterialsModule } from '../materials.module';
+import { WidgetsModule } from '../widgets/widgets.module';
 import { ResourceComponent } from './resource.component';
 import { NodeListComponent } from './node-list/node-list.component';
 import { NodeDetailComponent } from './node-detail/node-detail.component';
@@ -27,6 +28,7 @@ import { ResourceMainComponent } from './resource-main/resource-main.component';
 
     ResourceRoutingModule,
     MaterialsModule,
+    WidgetsModule,
     ChartModule,
   ],
   declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent, ResourceMainComponent],

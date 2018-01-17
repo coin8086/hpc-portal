@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialsModule } from '../materials.module';
+import { WidgetsModule } from '../widgets/widgets.module';
 import { CommandRoutingModule } from './command-routing.module';
 import { CommandComponent } from './command.component';
 import { CommandNewComponent } from './command-new/command-new.component';
@@ -12,6 +13,7 @@ import { ResultDetailComponent } from './result-detail/result-detail.component';
     CommonModule,
     CommandRoutingModule,
     MaterialsModule,
+    WidgetsModule,
   ],
   declarations: [CommandComponent, CommandNewComponent, ResultListComponent, ResultDetailComponent]
 })

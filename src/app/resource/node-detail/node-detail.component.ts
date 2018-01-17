@@ -1,6 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { Node } from '../node';
 import { NodeService } from '../node.service';
 
@@ -34,7 +33,6 @@ export class NodeDetailComponent implements AfterViewInit {
   constructor(
     private nodeService: NodeService,
     private route: ActivatedRoute,
-    private location: Location
   ) {}
 
   ngAfterViewInit() {
@@ -58,9 +56,5 @@ export class NodeDetailComponent implements AfterViewInit {
     });
     let data = usage.map(point => point.value);
     this.cpuChartData = { labels: labels, datasets: [{ data: data }] };
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }
