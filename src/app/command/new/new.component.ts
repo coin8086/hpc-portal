@@ -22,7 +22,7 @@ export class NewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== false)
+      if (result)
         this.nodeFilter = result;
     });
   }
