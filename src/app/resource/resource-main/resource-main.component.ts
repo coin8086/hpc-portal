@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatTabGroup } from '@angular/material/tabs'
 import { NodeService } from '../node.service';
 import { NodeListComponent } from '../node-list/node-list.component';
 
@@ -8,8 +9,11 @@ import { NodeListComponent } from '../node-list/node-list.component';
   templateUrl: './resource-main.component.html',
   styleUrls: ['./resource-main.component.css']
 })
-export class ResourceMainComponent implements AfterViewInit {
+export class ResourceMainComponent implements OnInit {
   private nodes = [];
+
+  @ViewChild(MatTabGroup)
+  private tabs: MatTabGroup;
 
   @ViewChild(NodeListComponent)
   private list: NodeListComponent;
@@ -20,10 +24,25 @@ export class ResourceMainComponent implements AfterViewInit {
     private nodeService: NodeService
   ) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
+    this.route.queryParamMap.subscribe(params => {
+      let view = params.get('view');
+      this.tabs.selectedIndex = (view == 'heatmap') ? 1 : 0;
+    });
     this.nodeService.getNodes().subscribe(nodes => {
       this.nodes = nodes;
     });
+  }
+
+  onTabChanged(event): void {
+    //Navigate to the same url while changing the query parameters. It won't
+    //reload the component, neither the nodes data.
+    if (event.index == 0) {
+      this.router.navigate(['.'], { relativeTo: this.route, queryParams: { view: 'list' }});
+    }
+    else {
+      this.router.navigate(['.'], { relativeTo: this.route, queryParams: { view: 'heatmap' }});
+    }
   }
 
   applyFilter(text: string): void {
