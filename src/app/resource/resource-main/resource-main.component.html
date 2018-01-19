@@ -8,6 +8,6 @@
     <resource-node-list [nodes]="nodes" (clickNode)="viewNodeDetail($event)"></resource-node-list>
   </mat-tab>
   <mat-tab label="Heatmap">
-    <resource-node-heatmap></resource-node-heatmap>
+    <resource-node-heatmap [nodes]="nodes" (clickNode)="viewNodeDetail($event)"></resource-node-heatmap>
   </mat-tab>
 </mat-tab-group>

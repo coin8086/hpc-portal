@@ -1,0 +1,21 @@
+.tile {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.tile.low {
+  background-color: green;
+}
+
+.tile.median {
+  background-color: yellow;
+}
+
+.tile.high {
+  background-color: red;
+}
