@@ -6,8 +6,18 @@
   padding: 1em;
 }
 
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
 .home {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   text-decoration: none;
   color: inherit;

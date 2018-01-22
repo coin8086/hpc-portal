@@ -1,6 +1,11 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button (click)="side.toggle()"><mat-icon>menu</mat-icon></button>
-  <a class="home" routerLink="/"><mat-icon>home</mat-icon><h1>Microsoft HPC</h1></a>
+  <div class="left">
+    <button mat-icon-button (click)="side.toggle()"><mat-icon>menu</mat-icon></button>
+    <a class="home" routerLink="/"><mat-icon>home</mat-icon><h1>Microsoft HPC</h1></a>
+  </div>
+  <div class="right">
+    <a mat-icon-button (click)="right.toggle()"><mat-icon>event_note</mat-icon></a>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
@@ -10,6 +15,9 @@
         <mat-icon>{{item.icon}}</mat-icon><span class="title">{{item.title}}</span>
       </a>
     </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav #right position="end" mode="over">
+    <app-notifications></app-notifications>
   </mat-sidenav>
   <mat-sidenav-content class="main-container">
     <router-outlet></router-outlet>
