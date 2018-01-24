@@ -1,0 +1,100 @@
+<app-back-button></app-back-button>
+
+<div class="title main">
+  <div class="name">{{result.testName}}</div>
+  <div class="state"><i class="material-icons">close</i> {{result.state | titlecase}}</div>
+</div>
+<div class="time">started at {{result.startedAt | date:'yyyy-MM-dd HH:mm:ss'}} updated at {{result.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+
+<div class="summary">
+  <div class="section">
+    <div class="name">
+      Summary
+    </div>
+    <div class="description">
+      This test was running under Default network layer.
+    </div>
+    <div class="data">
+      <table>
+        <tr>
+          <th>Node</th>
+          <th>Error</th>
+          <th>Count</th>
+          <th>Host Node(s) Name</th>
+        </tr>
+        <tr *ngFor="let row of result.summary?.pings">
+          <td>{{row.node}}</td>
+          <td>{{row.error}}</td>
+          <td>{{row.count}}</td>
+          <td>{{row.nodes}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="nodes">
+  <div class="node" *ngFor="let node of result.nodes">
+    <div class="title">
+      <span class="name">{{node.name}}</span>
+      <span class="state"><i class="material-icons md-18">close</i> {{node.state | titlecase}}</span>
+    </div>
+    <div class="details">
+      <div class="section">
+        <div class="name">
+          Ping Summary Table
+        </div>
+        <div class="description">
+          Summary of ping results run on the node
+        </div>
+        <div class="data">
+          <table>
+            <tr>
+              <th>Destination</th>
+              <th>IP Address</th>
+              <th>Result</th>
+              <th>Average</th>
+              <th>Best</th>
+              <th>Worst</th>
+              <th>Successful</th>
+              <th>Failures</th>
+            </tr>
+            <tr *ngFor="let row of node.details.pings">
+              <td>{{row.destination}}</td>
+              <td>{{row.ip}}</td>
+              <td>{{row.result}}</td>
+              <td>{{row.average}}</td>
+              <td>{{row.best}}</td>
+              <td>{{row.worst}}</td>
+              <td>{{row.successful}}</td>
+              <td>{{row.failed}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <div class="name">
+          Failed Pings
+        </div>
+        <div class="description">
+          List of nodes that failed a ping test
+        </div>
+        <div class="data">
+          <table>
+            <tr>
+              <th>Destination</th>
+              <th>Message</th>
+              <th>Count</th>
+            </tr>
+            <tr *ngFor="let row of node.details.failedPings">
+              <td>{{row.destination}}</td>
+              <td>{{row.message}}</td>
+              <td>{{row.count}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

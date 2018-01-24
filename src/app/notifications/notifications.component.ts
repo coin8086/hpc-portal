@@ -18,8 +18,8 @@ export class NotificationsComponent implements OnInit {
     {
       ts: now - 27 * 60 * 1000,
       type: 'info',
-      message: 'MPI Latency test finished successfully.',
-      link: '/#/diagnostics/results/2',
+      message: 'Service Running test finished successfully.',
+      link: '/#/diagnostics/results/1',
     },
   ];
 

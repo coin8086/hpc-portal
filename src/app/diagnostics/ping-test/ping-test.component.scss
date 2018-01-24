@@ -1,0 +1,73 @@
+app-back-button {
+  float: right;
+}
+
+.title {
+  display: flex;
+  align-items: flex-end;
+
+  .name {
+    margin-right: 0.5em;
+    font-weight: bold;
+  }
+
+  .state {
+    display: inline-flex;
+    align-items: center;
+    font-size: 80%;
+    color: red;
+  }
+}
+
+.title.main {
+  font-size: 150%;
+}
+
+.time {
+  margin-top: 8px;
+  font-size: 80%;
+}
+
+.nodes {
+  margin-top: 1em;
+}
+
+.node {
+  margin: 1.5em 0;
+
+  .title {
+    margin: 1em 0;
+    padding: 1em;
+    background: #f0f0f0;
+  }
+}
+
+.summary {
+  margin: 1em 0;
+}
+
+.section {
+  margin-bottom: 1em;
+
+  .name {
+    font-style: italic;
+  }
+
+  .description {
+    font-size: smaller;
+  }
+
+  .data {
+    margin-top: 0.5em;
+  }
+}
+
+th {
+  text-align: left;
+  font-weight: normal;
+  background-color: #f0f0f0;
+}
+
+th, td {
+  padding: 2px;
+}

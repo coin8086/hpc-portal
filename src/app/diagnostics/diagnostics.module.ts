@@ -13,6 +13,8 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { ResultDetailComponent } from './result-detail/result-detail.component';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { DiagnosticsService } from './diagnostics.service';
+import { ServiceRunningTestComponent } from './service-running-test/service-running-test.component';
+import { PingTestComponent } from './ping-test/ping-test.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,7 @@ import { DiagnosticsService } from './diagnostics.service';
     TreeModule,
     FormsModule,
   ],
-  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent],
+  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ServiceRunningTestComponent, PingTestComponent],
   providers: [DiagnosticsService],
 })
 export class DiagnosticsModule { }

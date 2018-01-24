@@ -1,3 +1,2 @@
-<app-back-button></app-back-button>
-<iframe *ngIf="id == 1" src="assets/reports/SOA_Service_Loading/report.html"></iframe>
-<iframe *ngIf="id == 2" src="assets/reports/MPI_Latency/report.html"></iframe>
+<app-service-running-test [result]="result" *ngIf="id == 1" ></app-service-running-test>
+<app-ping-test [result]="result" *ngIf="id == 2" ></app-ping-test>
