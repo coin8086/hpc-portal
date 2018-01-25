@@ -1,27 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Result } from '../result';
 import { DiagnosticsService } from '../diagnostics.service';
+import { ServiceRunningTestComponent } from './service-running-test/service-running-test.component';
+import { PingTestComponent } from './ping-test/ping-test.component';
+
+const map = {
+  'Service Running Test': ServiceRunningTestComponent,
+  'Ping Test': PingTestComponent,
+}
 
 @Component({
-  selector: 'app-result',
   templateUrl: './result-detail.component.html',
   styleUrls: ['./result-detail.component.css']
 })
 export class ResultDetailComponent implements OnInit {
-  private id: string;
+  @ViewChild('result', { read: ViewContainerRef })
+  resultViewRef: ViewContainerRef;
 
   private result: Result = {} as Result;
 
   constructor(
     private route: ActivatedRoute,
-    private diagnosticsService: DiagnosticsService
+    private diagnosticsService: DiagnosticsService,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.diagnosticsService.getResult(this.id).subscribe(result => {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.diagnosticsService.getResult(id).subscribe(result => {
       this.result = result;
+      this.loadComponent();
     });
+  }
+
+  loadComponent() {
+    let comp = map[this.result.testName];
+    let compFactory = this.componentFactoryResolver.resolveComponentFactory(comp);
+    let compRef = this.resultViewRef.createComponent(compFactory);
+    (compRef.instance as any).result = this.result;
   }
 }

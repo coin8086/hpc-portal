@@ -1,0 +1,23 @@
+.section {
+  .name {
+    font-style: italic;
+  }
+
+  .description {
+    font-size: smaller;
+  }
+
+  .data {
+    margin-top: 0.5em;
+  }
+}
+
+th {
+  text-align: left;
+  font-weight: normal;
+  background-color: #f0f0f0;
+}
+
+th, td {
+  padding: 2px;
+}

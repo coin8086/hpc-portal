@@ -1,0 +1,25 @@
+<app-result-layout [result]="result">
+  <ng-template #node let-details="details">
+    <div class="section">
+      <div class="name">
+        HPC Services
+      </div>
+      <div class="description">
+        This table lists the status of HPC services on the node.
+      </div>
+      <div class="data">
+        <table>
+          <tr>
+            <th>Service Name</th>
+            <th>Status</th>
+          </tr>
+          <tr *ngFor="let row of details.services">
+            <td>{{row.name}}</td>
+            <td>{{row.status}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </ng-template>
+</app-result-layout>
+

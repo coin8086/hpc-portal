@@ -1,0 +1,86 @@
+<app-result-layout [result]="result">
+  <ng-template #summary let-pings="pings">
+    <div class="section">
+      <div class="name">
+        Summary
+      </div>
+      <div class="description">
+        This test was running under Default network layer.
+      </div>
+      <div class="data">
+        <table>
+          <tr>
+            <th>Node</th>
+            <th>Error</th>
+            <th>Count</th>
+            <th>Host Node(s) Name</th>
+          </tr>
+          <tr *ngFor="let row of pings">
+            <td>{{row.node}}</td>
+            <td>{{row.error}}</td>
+            <td>{{row.count}}</td>
+            <td>{{row.nodes}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #node let-details="details">
+    <div class="section">
+      <div class="name">
+        Ping Summary Table
+      </div>
+      <div class="description">
+        Summary of ping results run on the node
+      </div>
+      <div class="data">
+        <table>
+          <tr>
+            <th>Destination</th>
+            <th>IP Address</th>
+            <th>Result</th>
+            <th>Average</th>
+            <th>Best</th>
+            <th>Worst</th>
+            <th>Successful</th>
+            <th>Failures</th>
+          </tr>
+          <tr *ngFor="let row of details.pings">
+            <td>{{row.destination}}</td>
+            <td>{{row.ip}}</td>
+            <td>{{row.result}}</td>
+            <td>{{row.average}}</td>
+            <td>{{row.best}}</td>
+            <td>{{row.worst}}</td>
+            <td>{{row.successful}}</td>
+            <td>{{row.failed}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="section">
+      <div class="name">
+        Failed Pings
+      </div>
+      <div class="description">
+        List of nodes that failed a ping test
+      </div>
+      <div class="data">
+        <table>
+          <tr>
+            <th>Destination</th>
+            <th>Message</th>
+            <th>Count</th>
+          </tr>
+          <tr *ngFor="let row of details.failedPings">
+            <td>{{row.destination}}</td>
+            <td>{{row.message}}</td>
+            <td>{{row.count}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </ng-template>
+</app-result-layout>
+

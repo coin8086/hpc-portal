@@ -13,8 +13,9 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { ResultDetailComponent } from './result-detail/result-detail.component';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { DiagnosticsService } from './diagnostics.service';
-import { ServiceRunningTestComponent } from './service-running-test/service-running-test.component';
-import { PingTestComponent } from './ping-test/ping-test.component';
+import { ResultLayoutComponent } from './result-detail/result-layout/result-layout.component';
+import { ServiceRunningTestComponent } from './result-detail/service-running-test/service-running-test.component';
+import { PingTestComponent } from './result-detail/ping-test/ping-test.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { PingTestComponent } from './ping-test/ping-test.component';
     TreeModule,
     FormsModule,
   ],
-  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ServiceRunningTestComponent, PingTestComponent],
+  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ResultLayoutComponent, ServiceRunningTestComponent, PingTestComponent],
   providers: [DiagnosticsService],
+  entryComponents: [ServiceRunningTestComponent, PingTestComponent],
 })
 export class DiagnosticsModule { }

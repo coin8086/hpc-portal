@@ -15,7 +15,7 @@ app-back-button {
     display: inline-flex;
     align-items: center;
     font-size: 80%;
-    color: green;
+    color: red;
   }
 }
 
@@ -42,7 +42,13 @@ app-back-button {
   }
 }
 
+.summary {
+  margin: 1em 0;
+}
+
 .section {
+  margin-bottom: 1em;
+
   .name {
     font-style: italic;
   }
@@ -56,12 +62,3 @@ app-back-button {
   }
 }
 
-th {
-  text-align: left;
-  font-weight: normal;
-  background-color: #f0f0f0;
-}
-
-th, td {
-  padding: 2px;
-}

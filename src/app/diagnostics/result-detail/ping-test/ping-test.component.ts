@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Result } from '../result';
+import { Result } from '../../result';
 
 @Component({
   selector: 'app-ping-test',
@@ -7,7 +7,7 @@ import { Result } from '../result';
   styleUrls: ['./ping-test.component.scss']
 })
 export class PingTestComponent implements OnInit {
-  @Input() result: Result = {} as Result;
+  @Input() result: Result;
 
   constructor() { }
 
