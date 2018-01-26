@@ -5,4 +5,5 @@ export class Result {
   startedAt: number;
   updatedAt: number;
   progress: number;
+  nodes: any;
 }
