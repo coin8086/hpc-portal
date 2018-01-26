@@ -32,8 +32,12 @@ export class ResultDetailComponent implements OnInit {
       case 'running':
         res = 'directions_run';
         break;
-      default:
+      case 'failure':
         res = 'close';
+        break;
+      default:
+        res = '';
+        console.warn('No state!');
     }
     return res;
   }
@@ -47,8 +51,11 @@ export class ResultDetailComponent implements OnInit {
       case 'running':
         res += ' is Running.';
         break;
-      default:
+      case 'failure':
         res += ' Failed!';
+        break;
+      default:
+        console.warn('No state!');
     }
     return res;
   }
