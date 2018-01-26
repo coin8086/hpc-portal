@@ -15,7 +15,14 @@ app-back-button {
     display: inline-flex;
     align-items: center;
     font-size: 80%;
+  }
+
+  .state.failure {
     color: red;
+  }
+
+  .state.success {
+    color: green;
   }
 }
 

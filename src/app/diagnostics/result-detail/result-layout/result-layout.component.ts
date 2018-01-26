@@ -21,4 +21,7 @@ export class ResultLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  stateIcon(state) {
+    return state === 'success' ? 'check' : 'close';
+  }
 }

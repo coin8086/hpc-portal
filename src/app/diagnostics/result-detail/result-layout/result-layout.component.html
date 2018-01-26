@@ -2,7 +2,7 @@
 
 <div class="title main">
   <div class="name">{{result.testName}}</div>
-  <div class="state"><i class="material-icons">close</i> {{result.state | titlecase}}</div>
+  <div class="state" [ngClass]="result.state"><i class="material-icons">{{stateIcon(result.state)}}</i> {{result.state | titlecase}}</div>
 </div>
 <div class="time">started at {{result.startedAt | date:'yyyy-MM-dd HH:mm:ss'}} updated at {{result.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</div>
 
@@ -14,7 +14,7 @@
   <div class="node" *ngFor="let node of result.nodes">
     <div class="title">
       <span class="name">{{node.name}}</span>
-      <span class="state"><i class="material-icons md-18">close</i> {{node.state | titlecase}}</span>
+      <span class="state" [ngClass]="node.state"><i class="material-icons md-18">{{stateIcon(node.state)}}</i> {{node.state | titlecase}}</span>
     </div>
     <div class="details">
       <ng-container *ngTemplateOutlet="nodeTemplate; context: node"></ng-container>
