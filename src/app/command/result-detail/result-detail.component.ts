@@ -30,7 +30,7 @@ export class ResultDetailComponent implements OnInit {
         res = 'check';
         break;
       case 'running':
-        res = 'check';
+        res = 'directions_run';
         break;
       default:
         res = 'close';
