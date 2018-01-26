@@ -23,7 +23,7 @@ const dirResult = `
  Volume in drive C has no label.
  Volume Serial Number is 6C15-D365
 
- Directory of C:\Users\hpcadmin
+ Directory of C:\\Users\\hpcadmin
 
 01/04/2018  01:50 AM    <DIR>          .
 01/04/2018  01:50 AM    <DIR>          ..
