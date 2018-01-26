@@ -24,4 +24,15 @@ export class ResultLayoutComponent implements OnInit {
   stateIcon(state) {
     return state === 'success' ? 'check' : 'close';
   }
+
+  title(name, state) {
+    let res = name;
+    if (state === 'success') {
+      res += ' Succeeded!';
+    }
+    else {
+      res += ' Failed!';
+    }
+    return res;
+  }
 }

@@ -4,35 +4,34 @@ app-back-button {
 
 .title {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  padding: 1em;
 
   .name {
-    margin-right: 0.5em;
     font-weight: bold;
+    margin-left: 0.3em;
   }
 
-  .state {
-    display: inline-flex;
-    align-items: center;
-    font-size: 80%;
-  }
+}
 
-  .state.failure {
-    color: red;
-  }
+.title.failure {
+  color: red;
+  background-color: #ffdada;
+}
 
-  .state.success {
-    color: green;
-  }
+.title.success {
+  color: green;
+  background-color: #d5ffd4;
 }
 
 .title.main {
   font-size: 150%;
+  clear: both;
 }
 
 .time {
   margin-top: 8px;
-  font-size: 80%;
+  font-size: small;
 }
 
 .nodes {
@@ -44,28 +43,14 @@ app-back-button {
 
   .title {
     margin: 1em 0;
-    padding: 1em;
-    background: #f0f0f0;
+  }
+
+  .details {
+    margin: 0 1em;
   }
 }
 
 .summary {
   margin: 1em 0;
-}
-
-.section {
-  margin-bottom: 1em;
-
-  .name {
-    font-style: italic;
-  }
-
-  .description {
-    font-size: smaller;
-  }
-
-  .data {
-    margin-top: 0.5em;
-  }
 }
 
