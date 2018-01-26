@@ -1,0 +1,62 @@
+app-back-button {
+  float: right;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+
+  .name {
+    font-weight: bold;
+    margin-left: 0.3em;
+  }
+}
+
+.title.failure {
+  color: red;
+  background-color: #ffdada;
+}
+
+.title.running {
+  color: blue;
+  background-color: #b3c4ff;
+}
+
+.title.success {
+  color: green;
+  background-color: #d5ffd4;
+}
+
+.title.main {
+  font-size: 150%;
+  clear: both;
+}
+
+.time {
+  margin-top: 8px;
+  font-size: small;
+}
+
+.nodes {
+  margin-top: 1em;
+}
+
+.node {
+  margin: 1.5em 0;
+
+  .title {
+    margin: 1em 0;
+  }
+
+  .details {
+    margin: 0 1em;
+  }
+
+  pre {
+    color: white;
+    background-color: black;
+    padding: 1em;
+  }
+}
+
