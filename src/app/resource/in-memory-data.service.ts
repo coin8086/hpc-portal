@@ -29,26 +29,30 @@ export class InMemoryDataService implements InMemoryDbService {
     return Math.round(Math.random() * scale);
   }
 
-  createDb() {
-    let nodes: any[] = [
-      { id: 10, name: 'HN1', },
-      { id: 12, name: 'HN2', },
-      { id: 13, name: 'HN3', },
-      { id: 14, name: 'WN11',},
-      { id: 15, name: 'WN12',},
-      { id: 16, name: 'WN13',},
-      { id: 17, name: 'WN21',},
-      { id: 18, name: 'WN22',},
-      { id: 19, name: 'WN23',},
-      { id: 20, name: 'WN30',},
-    ];
-    nodes.forEach(node => {
-      node.state = this.randomState();
-      node.health = this.randomHealth();
-      node.runningJobs = node.state == 'offline' ? 0 : this.randomNum(100);
-      node.cpuUsage = this.generateCpuUsage();
-    });
+  generateNames(num) {
+    let a = [];
+    for (let i = 1; i <= num; i++) {
+      let prefix = Math.random() >= 0.8 ? 'HN' : 'WN';
+      let name = prefix + i;
+      a.push(name);
+    }
+    return a;
+  }
 
+  createDb() {
+    let names = this.generateNames(50);
+    let index = 1;
+    let nodes = names.map(name => {
+      let state = this.randomState();
+      return {
+        id: index++,
+        name: name,
+        state: state,
+        health: this.randomHealth(),
+        runningJobs: state == 'offline' ? 0 : this.randomNum(100),
+        cpuUsage: this.generateCpuUsage(),
+      };
+    });
     return { nodes };
   }
 }
