@@ -8,7 +8,7 @@ import { Result } from './result';
 @Injectable()
 export class CommandService {
 
-  private resultsUrl = '/api/commandResults';
+  private resultsUrl = '/api/command/results';
 
   constructor(private http: HttpClient) {}
 

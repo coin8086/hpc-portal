@@ -68,6 +68,6 @@ export class InMemoryDataService implements InMemoryDbService {
       this.generateDirResult(2, now - 5 * 60 * 1000, 'success', 1.0),
     ];
 
-    return { commandResults: results };
+    return { results: results };
   }
 }
