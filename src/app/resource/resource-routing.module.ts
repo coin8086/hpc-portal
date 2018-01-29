@@ -9,7 +9,7 @@ const routes: Routes = [{
   component: ResourceComponent,
   children: [
     { path: '', component: ResourceMainComponent },
-    { path: ':id', component: NodeDetailComponent },
+    { path: ':id', component: NodeDetailComponent, data: { breadcrumb: "Node" }},
   ],
 }];
 

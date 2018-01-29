@@ -39,3 +39,8 @@ mat-toolbar {
 .title {
   margin-left: 10px;
 }
+
+app-breadcrumb {
+  margin-left: 1.5em;
+  font-size: 72%;
+}
