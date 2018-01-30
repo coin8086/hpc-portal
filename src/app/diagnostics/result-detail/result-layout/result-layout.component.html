@@ -6,6 +6,11 @@
 </div>
 <div class="time">started at {{result.startedAt | date:'yyyy-MM-dd HH:mm:ss'}} updated at {{result.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</div>
 
+<div class="overview">
+  <span class="rate">Success/Total: {{success}}/{{success + failure}} Success Rate: {{success / (success + failure) | percent}}</span>
+  <chart type="doughnut" [data]="overviewData" [options]="overviewOption"></chart>
+</div>
+
 <div class="summary" *ngIf="result.summary">
   <ng-container *ngTemplateOutlet="summaryTemplate; context: result.summary"></ng-container>
 </div>

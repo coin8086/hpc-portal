@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormsModule } from '@angular/forms'
+import { ChartModule } from 'angular2-chartjs';
 import { MaterialsModule } from '../materials.module';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { TreeModule } from 'angular-tree-component';
@@ -31,6 +32,7 @@ import { PingTestComponent } from './result-detail/ping-test/ping-test.component
     MaterialsModule,
     WidgetsModule,
     TreeModule,
+    ChartModule,
     FormsModule,
   ],
   declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ResultLayoutComponent, ServiceRunningTestComponent, PingTestComponent],

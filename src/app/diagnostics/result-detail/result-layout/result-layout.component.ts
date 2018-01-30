@@ -16,9 +16,41 @@ export class ResultLayoutComponent implements OnInit {
   @ContentChild('node')
   nodeTemplate: TemplateRef<any>;
 
+  overviewData: any = {};
+
+  overviewOption = {
+    responsive: false,
+    //maintainAspectRatio: false,
+    //legend : {
+    //  display: false,
+    //},
+  };
+
+  success = 0;
+
+  failure = 0;
+
   constructor() { }
 
   ngOnInit() {
+    this.result.nodes.forEach(node => {
+      if (node.state == 'success')
+        this.success++;
+      else
+        this.failure++;
+    });
+    this.overviewData = {
+      labels: ['Success', 'Failure'],
+      datasets: [{
+        data: [this.success, this.failure],
+        backgroundColor: [
+          //'#d5ffd4',
+          //'#ffdada',
+          '#109210',
+          '#f34646',
+        ]
+      }],
+    };
   }
 
   stateIcon(state) {

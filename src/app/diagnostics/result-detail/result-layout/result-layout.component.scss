@@ -54,3 +54,14 @@ app-back-button {
   margin: 1em 0;
 }
 
+.overview {
+  margin: 1em 0;
+
+  .rate {
+    font-size: smaller;
+  }
+}
+
+chart {
+  min-height: 150px;
+}
