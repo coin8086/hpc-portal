@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 import { Result } from '../../result';
 
 @Component({
@@ -9,9 +10,23 @@ import { Result } from '../../result';
 export class ServiceRunningTestComponent implements OnInit {
   @Input() result: Result;
 
+  private dataSource = new MatTableDataSource();
+  private displayedColumns = ['Node', 'State', 'HPC Management Service', 'HPC MPI Service', 'HPC Node Manager Service', 'HPC SOA Diag Mon Service', 'HPC Monitoring Client Service', 'HPC Broker Service'];
+
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.data = this.result.nodes.map(node => {
+      let res = { 'Node': node.name, 'State': node.state };
+      node.details.services.forEach(e => {
+        res[e.name] = e.status;
+      });
+      return res;
+    });
+  }
+
+  applyFilter(text: string): void {
+    this.dataSource.filter = text;
   }
 
 }

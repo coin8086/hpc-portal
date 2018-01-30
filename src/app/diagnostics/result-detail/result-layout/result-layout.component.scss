@@ -8,7 +8,6 @@ app-back-button {
   padding: 1em;
 
   .name {
-    font-weight: bold;
     margin-left: 0.3em;
   }
 
@@ -25,7 +24,6 @@ app-back-button {
 }
 
 .title.main {
-  font-size: 150%;
   clear: both;
 }
 
@@ -38,28 +36,8 @@ app-back-button {
   margin-top: 1em;
 }
 
-.node {
-  margin: 1.5em 0;
-
-  .title {
-    margin: 1em 0;
-  }
-
-  .details {
-    margin: 0 1em;
-  }
-}
-
-.summary {
-  margin: 1em 0;
-}
-
 .overview {
   margin: 1em 0;
-
-  .rate {
-    font-size: smaller;
-  }
 }
 
 chart {

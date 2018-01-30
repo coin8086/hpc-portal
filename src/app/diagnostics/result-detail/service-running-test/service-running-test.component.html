@@ -1,25 +1,24 @@
 <app-result-layout [result]="result">
-  <ng-template #node let-details="details">
-    <div class="section">
-      <div class="name">
-        HPC Services
-      </div>
-      <div class="description">
-        This table lists the status of HPC services on the node.
-      </div>
-      <div class="data">
-        <table>
-          <tr>
-            <th>Service Name</th>
-            <th>Status</th>
-          </tr>
-          <tr *ngFor="let row of details.services">
-            <td>{{row.name}}</td>
-            <td>{{row.status}}</td>
-          </tr>
-        </table>
-      </div>
+  <ng-template #nodes>
+    <div class="filter">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
     </div>
+
+    <mat-table #table [dataSource]="dataSource">
+      <!--
+       Note that these columns can be defined in any order. The actual rendered
+       columns are set as a property on the row definition, displayedColumns."
+      -->
+      <ng-container *ngFor="let item of displayedColumns" [matColumnDef]="item">
+        <mat-header-cell *matHeaderCellDef>{{item}}</mat-header-cell>
+        <mat-cell *matCellDef="let node">{{node[item]}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let node; columns: displayedColumns;" [ngClass]="node['State']" class="node"></mat-row>
+    </mat-table>
+
   </ng-template>
 </app-result-layout>
-

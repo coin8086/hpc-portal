@@ -10,11 +10,8 @@ export class ResultLayoutComponent implements OnInit {
   @Input()
   result: Result = {} as Result;
 
-  @ContentChild('summary')
-  summaryTemplate: TemplateRef<any>;
-
-  @ContentChild('node')
-  nodeTemplate: TemplateRef<any>;
+  @ContentChild('nodes')
+  nodesTemplate: TemplateRef<any>;
 
   overviewData: any = {};
 
