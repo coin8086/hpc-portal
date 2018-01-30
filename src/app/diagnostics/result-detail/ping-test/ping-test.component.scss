@@ -1,25 +1,15 @@
-.section {
-  margin-bottom: 1em;
-
-  .name {
-    font-style: italic;
-  }
-
-  .description {
-    font-size: smaller;
-  }
-
-  .data {
-    margin-top: 0.5em;
-  }
+.filter mat-form-field {
+  width: 100%;
 }
 
-th {
-  text-align: left;
-  font-weight: normal;
-  background-color: #e2e2e2;
+.mat-header-row {
+  background-color: #e6e6e6;
 }
 
-th, td {
-  padding: 3px;
+.node.success {
+  background-color: #d5ffd4;
+}
+
+.node.failure {
+  background-color: #ffdada;
 }

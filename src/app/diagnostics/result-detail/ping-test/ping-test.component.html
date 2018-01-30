@@ -1,86 +1,24 @@
 <app-result-layout [result]="result">
-  <ng-template #summary let-pings="pings">
-    <div class="section">
-      <div class="name">
-        Summary
-      </div>
-      <div class="description">
-        This test was running under Default network layer.
-      </div>
-      <div class="data">
-        <table>
-          <tr>
-            <th>Node</th>
-            <th>Error</th>
-            <th>Count</th>
-            <th>Host Node(s) Name</th>
-          </tr>
-          <tr *ngFor="let row of pings">
-            <td>{{row.node}}</td>
-            <td>{{row.error}}</td>
-            <td>{{row.count}}</td>
-            <td>{{row.nodes}}</td>
-          </tr>
-        </table>
-      </div>
+  <ng-template #nodes>
+    <div class="filter">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
     </div>
-  </ng-template>
 
-  <ng-template #node let-details="details">
-    <div class="section">
-      <div class="name">
-        Ping Summary Table
-      </div>
-      <div class="description">
-        Summary of ping results run on the node
-      </div>
-      <div class="data">
-        <table>
-          <tr>
-            <th>Destination</th>
-            <th>IP Address</th>
-            <th>Result</th>
-            <th>Average</th>
-            <th>Best</th>
-            <th>Worst</th>
-            <th>Successful</th>
-            <th>Failures</th>
-          </tr>
-          <tr *ngFor="let row of details.pings">
-            <td>{{row.destination}}</td>
-            <td>{{row.ip}}</td>
-            <td>{{row.result}}</td>
-            <td>{{row.average}}</td>
-            <td>{{row.best}}</td>
-            <td>{{row.worst}}</td>
-            <td>{{row.successful}}</td>
-            <td>{{row.failed}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="section">
-      <div class="name">
-        Failed Pings
-      </div>
-      <div class="description">
-        List of nodes that failed a ping test
-      </div>
-      <div class="data">
-        <table>
-          <tr>
-            <th>Destination</th>
-            <th>Message</th>
-            <th>Count</th>
-          </tr>
-          <tr *ngFor="let row of details.failedPings">
-            <td>{{row.destination}}</td>
-            <td>{{row.message}}</td>
-            <td>{{row.count}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <mat-table #table [dataSource]="dataSource">
+      <!--
+       Note that these columns can be defined in any order. The actual rendered
+       columns are set as a property on the row definition, displayedColumns."
+      -->
+      <ng-container *ngFor="let item of displayedColumns" [matColumnDef]="item">
+        <mat-header-cell *matHeaderCellDef>{{item}}</mat-header-cell>
+        <mat-cell *matCellDef="let node">{{node[item]}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let node; columns: displayedColumns;" [ngClass]="node['State']" class="node"></mat-row>
+    </mat-table>
   </ng-template>
 </app-result-layout>
 

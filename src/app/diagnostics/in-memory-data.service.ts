@@ -129,9 +129,21 @@ export class InMemoryDataService implements InMemoryDbService {
 
     let names = this.generateNames(100);
     result.nodes = names.map(name => {
+      let best = Math.round(Math.random() * 10);
+      let worst = best + Math.round(Math.random() * 100);
+      let avg = Math.round((best + worst) / (2 + Math.random()));
       return {
         name: name,
         state: Math.random() < 0.8 ? 'success' : 'failure',
+
+        /*
+         * The "best", "worst" and "avarage" should be calculated from
+         * the "pings" section. They're here for simplicity of demo.
+         * */
+        best: best,
+        worst: worst,
+        average: avg,
+
         details: {
           //Destination IP Address Result Average Best Worst Successful Failures
           //IAASCN000 fe80::eda3:a138:14ab:a23e Succeeded 0 ms 0 ms 0 ms 4 0
