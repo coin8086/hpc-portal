@@ -18,7 +18,7 @@ export class NotificationsComponent implements OnInit {
     {
       ts: now - 27 * 60 * 1000,
       type: 'info',
-      message: 'Service Running test finished successfully.',
+      message: 'Service Running test completed.',
       link: '/#/diagnostics/results/1',
     },
   ];

@@ -3,22 +3,6 @@ import { Result } from './result';
 
 const now = new Date().getTime();
 
-const nodeNames = [
-  'HN1',
-  'HN2',
-  'HN3',
-  'IAASCN000',
-  'IAASCN001',
-  'IAASCN002',
-  'IAASCN003',
-  'IAASCN004',
-  'IAASCN005',
-  'IAASCN006',
-  'IAASCN007',
-  'IAASCN008',
-  'IAASCN009',
-];
-
 const dirResult = `
  Volume in drive C has no label.
  Volume Serial Number is 6C15-D365
@@ -43,6 +27,16 @@ const dirResult = `
 `
 
 export class InMemoryDataService implements InMemoryDbService {
+  generateNames(num) {
+    let a = [];
+    for (let i = 1; i <= num; i++) {
+      let prefix = Math.random() > 0.9 ? 'HN' : 'WN';
+      let name = prefix + i;
+      a.push(name);
+    }
+    return a;
+  }
+
   generateDirResult(id, time, state, progress) {
     let result = {
       id: id,
@@ -52,7 +46,8 @@ export class InMemoryDataService implements InMemoryDbService {
       startedAt: time - 1000 * 60 * 2,
       updatedAt: time,
     };
-    (result as any).nodes = nodeNames.map(name => {
+    let names = this.generateNames(100);
+    (result as any).nodes = names.map(name => {
       return {
         name: name,
         state: state,

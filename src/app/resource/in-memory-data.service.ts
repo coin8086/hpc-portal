@@ -32,7 +32,7 @@ export class InMemoryDataService implements InMemoryDbService {
   generateNames(num) {
     let a = [];
     for (let i = 1; i <= num; i++) {
-      let prefix = Math.random() >= 0.8 ? 'HN' : 'WN';
+      let prefix = Math.random() > 0.9 ? 'HN' : 'WN';
       let name = prefix + i;
       a.push(name);
     }
@@ -40,7 +40,7 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   createDb() {
-    let names = this.generateNames(50);
+    let names = this.generateNames(100);
     let index = 1;
     let nodes = names.map(name => {
       let state = this.randomState();

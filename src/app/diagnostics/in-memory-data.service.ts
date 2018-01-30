@@ -3,22 +3,6 @@ import { Result } from './result';
 
 const now = new Date().getTime();
 
-const nodeNames = [
-  'HN1',
-  'HN2',
-  'HN3',
-  'IAASCN000',
-  'IAASCN001',
-  'IAASCN002',
-  'IAASCN003',
-  'IAASCN004',
-  'IAASCN005',
-  'IAASCN006',
-  'IAASCN007',
-  'IAASCN008',
-  'IAASCN009',
-];
-
 //Service Name Status
 //HPC Management Service Running
 //HPC MPI Service Running
@@ -74,19 +58,30 @@ const headServices = [
 
 
 export class InMemoryDataService implements InMemoryDbService {
+  generateNames(num) {
+    let a = [];
+    for (let i = 1; i <= num; i++) {
+      let prefix = Math.random() > 0.9 ? 'HN' : 'WN';
+      let name = prefix + i;
+      a.push(name);
+    }
+    return a;
+  }
+
   generateServiceRunningTest(id) {
     let result = {
       id: id,
       testName: 'Service Running Test',
-      state: 'success',
+      state: 'failure',
       progress: 1.0,
       startedAt: now - 1000 * 60 * 2,
       updatedAt: now,
     } as Result;
-    result.nodes = nodeNames.map(name => {
+    let names = this.generateNames(100);
+    result.nodes = names.map(name => {
       return {
         name: name,
-        state: 'success',
+        state: Math.random() < 0.9 ? 'success' : 'failure',
         details: {
           services: name.match(/^HN/) ? headServices : nodeServices,
         },
@@ -132,10 +127,11 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     } as Result;
 
-    result.nodes = nodeNames.map(name => {
+    let names = this.generateNames(100);
+    result.nodes = names.map(name => {
       return {
         name: name,
-        state: 'failure',
+        state: Math.random() < 0.8 ? 'success' : 'failure',
         details: {
           //Destination IP Address Result Average Best Worst Successful Failures
           //IAASCN000 fe80::eda3:a138:14ab:a23e Succeeded 0 ms 0 ms 0 ms 4 0
