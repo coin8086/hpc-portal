@@ -17,9 +17,11 @@ export class ResultDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.commandService.getResult(id).subscribe(result => {
-      this.result = result;
+    this.route.paramMap.subscribe(map => {
+      let id = map.get('id');
+      this.commandService.getResult(id).subscribe(result => {
+        this.result = result;
+      });
     });
   }
 

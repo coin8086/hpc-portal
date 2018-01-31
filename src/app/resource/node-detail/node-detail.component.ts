@@ -36,10 +36,12 @@ export class NodeDetailComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.nodeService.getNode(id).subscribe(node => {
-      this.node = node;
-      this.makeCpuChartData(node.cpuUsage);
+    this.route.paramMap.subscribe(map => {
+      let id = map.get('id');
+      this.nodeService.getNode(id).subscribe(node => {
+        this.node = node;
+        this.makeCpuChartData(node.cpuUsage);
+      });
     });
   }
 

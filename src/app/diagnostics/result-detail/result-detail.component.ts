@@ -27,14 +27,19 @@ export class ResultDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.diagnosticsService.getResult(id).subscribe(result => {
-      this.result = result;
-      this.loadComponent();
+    this.route.paramMap.subscribe(map => {
+      let id = map.get('id');
+      this.diagnosticsService.getResult(id).subscribe(result => {
+        this.result = result;
+        this.loadComponent();
+      });
     });
   }
 
   loadComponent() {
+    //Revmoe previously created component.
+    this.resultViewRef.remove();
+
     let comp = map[this.result.testName];
     let compFactory = this.componentFactoryResolver.resolveComponentFactory(comp);
     let compRef = this.resultViewRef.createComponent(compFactory);
