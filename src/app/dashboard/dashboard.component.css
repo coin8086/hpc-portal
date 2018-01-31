@@ -1,0 +1,21 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block {
+  flex: 1;
+  padding: 10px;
+}
+
+.nodes {
+  flex: 2;
+}
+
+.jobs {
+  flex: 1;
+}
+
+h2 {
+  margin-top: 0;
+}
