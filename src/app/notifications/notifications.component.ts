@@ -12,14 +12,14 @@ export class NotificationsComponent implements OnInit {
     {
       ts: now - 10 * 60 * 1000,
       type: 'info',
-      message: 'Cluster Run command "dir" is in progress...',
+      message: 'Cluster Run: Command "dir" is in progress...',
       link: '/#/command/results/1',
     },
     {
       ts: now - 27 * 60 * 1000,
       type: 'info',
-      message: 'Service Running test completed.',
-      link: '/#/diagnostics/results/1',
+      message: 'Diagnostics: Ping test completed.',
+      link: '/#/diagnostics/results/2',
     },
   ];
 
