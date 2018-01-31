@@ -13,7 +13,3 @@
 .node.failure {
   background-color: #ffdada;
 }
-
-.node {
-  cursor: pointer;
-}

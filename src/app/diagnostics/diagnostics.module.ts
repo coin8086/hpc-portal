@@ -17,6 +17,7 @@ import { DiagnosticsService } from './diagnostics.service';
 import { ResultLayoutComponent } from './result-detail/result-layout/result-layout.component';
 import { ServiceRunningTestComponent } from './result-detail/service-running-test/service-running-test.component';
 import { PingTestComponent } from './result-detail/ping-test/ping-test.component';
+import { PingTestNodeResultComponent } from './result-detail/ping-test/ping-test-node-result/ping-test-node-result.component';
 
 @NgModule({
   imports: [
@@ -35,8 +36,8 @@ import { PingTestComponent } from './result-detail/ping-test/ping-test.component
     ChartModule,
     FormsModule,
   ],
-  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ResultLayoutComponent, ServiceRunningTestComponent, PingTestComponent],
+  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ResultLayoutComponent, ServiceRunningTestComponent, PingTestComponent, PingTestNodeResultComponent],
   providers: [DiagnosticsService],
-  entryComponents: [ServiceRunningTestComponent, PingTestComponent],
+  entryComponents: [ServiceRunningTestComponent, PingTestComponent, PingTestNodeResultComponent],
 })
 export class DiagnosticsModule { }

@@ -17,7 +17,7 @@
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let node; columns: displayedColumns;" [ngClass]="node['State']" class="node"></mat-row>
+      <mat-row *matRowDef="let node; columns: displayedColumns;" [ngClass]="node['State']" class="node" (click)="viewDetail(node)"></mat-row>
     </mat-table>
   </ng-template>
 </app-result-layout>

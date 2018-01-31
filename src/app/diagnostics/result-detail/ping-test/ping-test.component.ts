@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Result } from '../../result';
+import { PingTestNodeResultComponent } from './ping-test-node-result/ping-test-node-result.component';
 
 @Component({
   selector: 'app-ping-test',
@@ -13,7 +15,7 @@ export class PingTestComponent implements OnInit {
   private dataSource = new MatTableDataSource();
   private displayedColumns = ['Node', 'State', 'Worst', 'Best', 'Average'];
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     this.dataSource.data = this.result.nodes.map(node => {
@@ -22,7 +24,8 @@ export class PingTestComponent implements OnInit {
         'State': node.state,
         'Worst': node.worst,
         'Best': node.best,
-        'Average': node.average
+        'Average': node.average,
+        pings: node.details.pings,
       };
       return res;
     });
@@ -32,4 +35,10 @@ export class PingTestComponent implements OnInit {
     this.dataSource.filter = text;
   }
 
+  viewDetail(node): void {
+    this.dialog.open(PingTestNodeResultComponent, {
+      width: '98%',
+      data: { node: node }
+    });
+  }
 }
