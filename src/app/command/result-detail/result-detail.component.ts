@@ -37,9 +37,6 @@ export class ResultDetailComponent implements OnInit {
       case 'failure':
         res = 'close';
         break;
-      default:
-        res = '';
-        console.warn('No state!');
     }
     return res;
   }
@@ -56,8 +53,6 @@ export class ResultDetailComponent implements OnInit {
       case 'failure':
         res += ' Failed!';
         break;
-      default:
-        console.warn('No state!');
     }
     return res;
   }
