@@ -3,59 +3,25 @@ import { Result } from './result';
 
 const now = new Date().getTime();
 
-//Service Name Status
-//HPC Management Service Running
-//HPC MPI Service Running
-//HPC Node Manager Service Running
-//HPC SOA Diag Mon Service Running
-//HPC Monitoring Client Service Running
-
 const nodeServices = [
-  {
-    name: 'HPC Management Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC MPI Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC Node Manager Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC SOA Diag Mon Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC Monitoring Client Service',
-    status: 'Running',
-  },
+  'HPC Management Service',
+  'HPC MPI Service',
+  'HPC Node Manager Service',
+  'HPC SOA Diag Mon Service',
+  'HPC Monitoring Client Service',
 ]
 
 const headServices = [
-  {
-    name: 'HPC MPI Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC Node Manager Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC SOA Diag Mon Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC Monitoring Client Service',
-    status: 'Running',
-  },
-  {
-    name: 'HPC Broker Service',
-    status: 'Running',
-  },
+  'HPC MPI Service',
+  'HPC Node Manager Service',
+  'HPC SOA Diag Mon Service',
+  'HPC Monitoring Client Service',
+  'HPC Broker Service',
 ]
 
+const sRun = "Running"
+
+const sStop = "Stopped"
 
 export class InMemoryDataService implements InMemoryDbService {
   generateNames(num) {
@@ -79,11 +45,19 @@ export class InMemoryDataService implements InMemoryDbService {
     } as Result;
     let names = this.generateNames(100);
     result.nodes = names.map(name => {
+      let ok = Math.random() < 0.9;
+      let services = name.match(/^HN/) ? headServices : nodeServices;
+      if (ok) {
+        services = services.map(sname => ({ name: sname, status: sRun })) as any;
+      }
+      else {
+        services = services.map(sname => ({ name: sname, status: Math.random() < 0.1 ? sRun : sStop })) as any;
+      }
       return {
         name: name,
-        state: Math.random() < 0.9 ? 'success' : 'failure',
+        state: ok ? 'success' : 'failure',
         details: {
-          services: name.match(/^HN/) ? headServices : nodeServices,
+          services: services,
         },
       };
     });
