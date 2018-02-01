@@ -10,7 +10,6 @@ import { Node } from '../node';
 })
 export class NodeListComponent implements OnChanges {
   @Input() nodes = [];
-  @Output() clickNode: EventEmitter<any> = new EventEmitter();
 
   private dataSource = new MatTableDataSource();
   private displayedColumns = ['select', 'name', 'state', 'health', 'runningJobs'];
@@ -34,10 +33,6 @@ export class NodeListComponent implements OnChanges {
 
   get selectedData(): any[] {
     return this.selection.selected;
-  }
-
-  clickRow(node): void {
-    this.clickNode.emit(node);
   }
 
   private isAllSelected() {

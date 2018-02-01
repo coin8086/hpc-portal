@@ -1,5 +1,4 @@
 <mat-table #table [dataSource]="dataSource">
-
   <!--
    Note that these columns can be defined in any order. The actual rendered
    columns are set as a property on the row definition, that is displayedColumns."
@@ -22,7 +21,7 @@
 
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let node"> {{node.name}} </mat-cell>
+    <mat-cell *matCellDef="let node"><a [routerLink]="node.id">{{node.name}}</a></mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="state">
@@ -41,5 +40,5 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let node; columns: displayedColumns;" (click)="clickRow(node)"></mat-row>
+  <mat-row *matRowDef="let node; columns: displayedColumns;" (click)="selection.toggle(node)"></mat-row>
 </mat-table>
