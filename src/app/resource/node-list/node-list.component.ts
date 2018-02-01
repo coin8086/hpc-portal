@@ -1,5 +1,6 @@
 import { Component, OnChanges, SimpleChanges, EventEmitter, Input, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { SelectionModel  } from '@angular/cdk/collections';
 import { Node } from '../node';
 
 @Component({
@@ -12,7 +13,9 @@ export class NodeListComponent implements OnChanges {
   @Output() clickNode: EventEmitter<any> = new EventEmitter();
 
   private dataSource = new MatTableDataSource();
-  private displayedColumns = ['name', 'state', 'health', 'runningJobs'];
+  private displayedColumns = ['select', 'name', 'state', 'health', 'runningJobs'];
+
+  private selection = new SelectionModel(true, []);
 
   constructor() {}
 
@@ -31,5 +34,17 @@ export class NodeListComponent implements OnChanges {
 
   clickRow(node): void {
     this.clickNode.emit(node);
+  }
+
+  private isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected == numRows;
+  }
+
+  private masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
   }
 }
