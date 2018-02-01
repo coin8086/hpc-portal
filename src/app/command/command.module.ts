@@ -9,7 +9,6 @@ import { MaterialsModule } from '../materials.module';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { CommandRoutingModule } from './command-routing.module';
 import { CommandComponent } from './command.component';
-import { NewComponent } from './new/new.component';
 import { ResultListComponent } from './result-list/result-list.component';
 import { ResultDetailComponent } from './result-detail/result-detail.component';
 
@@ -28,7 +27,7 @@ import { ResultDetailComponent } from './result-detail/result-detail.component';
     WidgetsModule,
     FormsModule,
   ],
-  declarations: [CommandComponent, NewComponent, ResultListComponent, ResultDetailComponent],
+  declarations: [CommandComponent, ResultListComponent, ResultDetailComponent],
   providers: [CommandService],
 })
 export class CommandModule { }

@@ -16,6 +16,7 @@ import { NodeService } from './node.service';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { ResourceMainComponent } from './resource-main/resource-main.component';
 import { NewDiagnosticsComponent } from './new-diagnostics/new-diagnostics.component';
+import { NewCommandComponent } from './new-command/new-command.component';
 
 @NgModule({
   imports: [
@@ -34,8 +35,8 @@ import { NewDiagnosticsComponent } from './new-diagnostics/new-diagnostics.compo
     WidgetsModule,
     ChartModule,
   ],
-  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent, ResourceMainComponent, NewDiagnosticsComponent],
+  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent, ResourceMainComponent, NewDiagnosticsComponent, NewCommandComponent],
   providers: [NodeService],
-  entryComponents: [NewDiagnosticsComponent],
+  entryComponents: [NewDiagnosticsComponent, NewCommandComponent],
 })
 export class ResourceModule { }

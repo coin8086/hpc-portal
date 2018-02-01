@@ -4,10 +4,10 @@ import { NodeFilterBuilderComponent } from '../../widgets/node-filter-builder/no
 
 @Component({
   selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  templateUrl: './new-command.component.html',
+  styleUrls: ['./new-command.component.css']
 })
-export class NewComponent implements OnInit {
+export class NewCommandComponent implements OnInit {
   private nodeFilter: string = '';
 
   constructor(public dialog: MatDialog) {}

@@ -6,6 +6,7 @@ import { NodeService } from '../node.service';
 import { NodeListComponent } from '../node-list/node-list.component';
 import { NodeHeatmapComponent } from '../node-heatmap/node-heatmap.component';
 import { NewDiagnosticsComponent } from '../new-diagnostics/new-diagnostics.component';
+import { NewCommandComponent } from '../new-command/new-command.component';
 
 @Component({
   selector: 'app-resource-main',
@@ -73,5 +74,13 @@ export class ResourceMainComponent implements OnInit {
   }
 
   runCmd() {
+    let dialogRef = this.dialog.open(NewCommandComponent, {
+      width: '98%',
+      data: {}
+    });
+
+    //TODO: Run diagnostic tests on user selected nodes...
+    //dialogRef.afterClosed().subscribe(result => {
+    //});
   }
 }
