@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs'
 import { NodeService } from '../node.service';
 import { NodeListComponent } from '../node-list/node-list.component';
+import { NodeHeatmapComponent } from '../node-heatmap/node-heatmap.component';
 
 @Component({
   selector: 'app-resource-main',
@@ -17,6 +18,9 @@ export class ResourceMainComponent implements OnInit {
 
   @ViewChild(NodeListComponent)
   private list: NodeListComponent;
+
+  @ViewChild(NodeHeatmapComponent)
+  private map: NodeHeatmapComponent;
 
   constructor(
     private router: Router,
@@ -47,6 +51,7 @@ export class ResourceMainComponent implements OnInit {
 
   applyFilter(text: string): void {
     this.list.filter(text);
+    this.map.nodes = this.list.filteredData;
   }
 
   viewNodeDetail(node) {
