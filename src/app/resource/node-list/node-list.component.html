@@ -39,6 +39,20 @@
     <mat-cell *matCellDef="let node"> {{node.runningJobs}} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let node">
+      <button mat-icon-button [matMenuTriggerFor]="appMenu" (click)="$event.stopPropagation(); select(node)">
+        <i class="material-icons">more_horiz</i>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item (click)="runDiagnostics()">Run Diagnostics...</button>
+    <button mat-menu-item (click)="runCommand()">Run Command...</button>
+  </mat-menu>
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let node; columns: displayedColumns;" (click)="selection.toggle(node)"></mat-row>
 </mat-table>

@@ -14,7 +14,8 @@ import {
   MatSelectModule,
   MatTooltipModule,
   MatStepperModule,
-  MatDialogModule
+  MatDialogModule,
+  MatMenuModule
 } from '@angular/material';
 
 const modules = [
@@ -32,7 +33,8 @@ const modules = [
   MatSelectModule,
   MatTooltipModule,
   MatStepperModule,
-  MatDialogModule
+  MatDialogModule,
+  MatMenuModule
 ];
 
 @NgModule({
