@@ -32,6 +32,10 @@ export class NodeListComponent implements OnChanges {
     return this.dataSource.filteredData;
   }
 
+  get selectedData(): any[] {
+    return this.selection.selected;
+  }
+
   clickRow(node): void {
     this.clickNode.emit(node);
   }

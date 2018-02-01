@@ -1,3 +1,7 @@
+<div class="actions">
+  <button mat-raised-button [disabled]="list.selectedData.length == 0" (click)="runDiag()">Run Diagnostics...</button>
+  <button mat-raised-button [disabled]="list.selectedData.length == 0" (click)="runCmd()">Run Command...</button>
+</div>
 <div class="filter">
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">

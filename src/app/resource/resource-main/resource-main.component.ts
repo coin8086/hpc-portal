@@ -57,4 +57,10 @@ export class ResourceMainComponent implements OnInit {
   viewNodeDetail(node) {
     this.router.navigate([node.id], { relativeTo: this.route })
   }
+
+  runDiag() {
+  }
+
+  runCmd() {
+  }
 }
