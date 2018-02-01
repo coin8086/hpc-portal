@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FormsModule } from '@angular/forms'
+import { TreeModule } from 'angular-tree-component';
 import { ChartModule } from 'angular2-chartjs';
 import { ResourceRoutingModule } from './resource-routing.module';
 import { MaterialsModule } from '../materials.module';
@@ -13,6 +15,7 @@ import { NodeHeatmapComponent } from './node-heatmap/node-heatmap.component';
 import { NodeService } from './node.service';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { ResourceMainComponent } from './resource-main/resource-main.component';
+import { NewDiagnosticsComponent } from './new-diagnostics/new-diagnostics.component';
 
 @NgModule({
   imports: [
@@ -26,10 +29,13 @@ import { ResourceMainComponent } from './resource-main/resource-main.component';
 
     ResourceRoutingModule,
     MaterialsModule,
+    FormsModule,
+    TreeModule,
     WidgetsModule,
     ChartModule,
   ],
-  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent, ResourceMainComponent],
+  declarations: [ResourceComponent, NodeListComponent, NodeDetailComponent, NodeHeatmapComponent, ResourceMainComponent, NewDiagnosticsComponent],
   providers: [NodeService],
+  entryComponents: [NewDiagnosticsComponent],
 })
 export class ResourceModule { }

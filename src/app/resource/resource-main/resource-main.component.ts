@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NodeService } from '../node.service';
 import { NodeListComponent } from '../node-list/node-list.component';
 import { NodeHeatmapComponent } from '../node-heatmap/node-heatmap.component';
+import { NewDiagnosticsComponent } from '../new-diagnostics/new-diagnostics.component';
 
 @Component({
   selector: 'app-resource-main',
@@ -25,7 +27,8 @@ export class ResourceMainComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private nodeService: NodeService
+    private nodeService: NodeService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -59,6 +62,14 @@ export class ResourceMainComponent implements OnInit {
   }
 
   runDiag() {
+    let dialogRef = this.dialog.open(NewDiagnosticsComponent, {
+      width: '98%',
+      data: {}
+    });
+
+    //TODO: Run diagnostic tests on user selected nodes...
+    //dialogRef.afterClosed().subscribe(result => {
+    //});
   }
 
   runCmd() {

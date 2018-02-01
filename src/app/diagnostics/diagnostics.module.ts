@@ -6,10 +6,8 @@ import { FormsModule } from '@angular/forms'
 import { ChartModule } from 'angular2-chartjs';
 import { MaterialsModule } from '../materials.module';
 import { WidgetsModule } from '../widgets/widgets.module';
-import { TreeModule } from 'angular-tree-component';
 import { DiagnosticsRoutingModule } from './diagnostics-routing.module';
 import { DiagnosticsComponent } from './diagnostics.component';
-import { NewComponent } from './new/new.component';
 import { ResultListComponent } from './result-list/result-list.component';
 import { ResultDetailComponent } from './result-detail/result-detail.component';
 import { InMemoryDataService }  from './in-memory-data.service';
@@ -32,11 +30,10 @@ import { PingTestNodeResultComponent } from './result-detail/ping-test/ping-test
     DiagnosticsRoutingModule,
     MaterialsModule,
     WidgetsModule,
-    TreeModule,
     ChartModule,
     FormsModule,
   ],
-  declarations: [DiagnosticsComponent, NewComponent, ResultListComponent, ResultDetailComponent, ResultLayoutComponent, ServiceRunningTestComponent, PingTestComponent, PingTestNodeResultComponent],
+  declarations: [DiagnosticsComponent, ResultListComponent, ResultDetailComponent, ResultLayoutComponent, ServiceRunningTestComponent, PingTestComponent, PingTestNodeResultComponent],
   providers: [DiagnosticsService],
   entryComponents: [ServiceRunningTestComponent, PingTestComponent, PingTestNodeResultComponent],
 })
