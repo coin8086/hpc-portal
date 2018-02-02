@@ -54,6 +54,10 @@ export class ResourceMainComponent implements OnInit {
     this.map.nodes = this.list.filteredData;
   }
 
+  viewNodeDetail(node) {
+    this.router.navigate([node.id], { relativeTo: this.route })
+  }
+
   hasNoSelection(): boolean {
     return this.list.selectedData.length == 0;
   }
