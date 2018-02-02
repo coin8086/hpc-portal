@@ -38,14 +38,11 @@
       </ng-template>
       <div>
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext>Next</button>
-      </div>
-    </mat-step>
-    <mat-step label="Ready to go">
-      <div>
-        <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext>Run</button>
       </div>
     </mat-step>
   </mat-vertical-stepper>
 </mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true">Run</button>
+</mat-dialog-actions>
