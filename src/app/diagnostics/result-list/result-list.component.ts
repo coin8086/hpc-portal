@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
+import { SelectionModel  } from '@angular/cdk/collections';
 import { Result } from '../result';
 import { DiagnosticsService } from '../diagnostics.service';
 
@@ -12,7 +13,9 @@ import { DiagnosticsService } from '../diagnostics.service';
 export class ResultListComponent {
 
   private dataSource = new MatTableDataSource();
-  private displayedColumns = ['testName', 'state', 'progress', 'startedAt', 'updatedAt'];
+  private displayedColumns = ['select', 'testName', 'state', 'progress', 'startedAt', 'updatedAt', 'actions'];
+
+  private selection = new SelectionModel(true, []);
 
   constructor(
     private router: Router,
@@ -24,5 +27,22 @@ export class ResultListComponent {
     this.diagnosticsService.getResults().subscribe(results => {
       this.dataSource.data = results;
     });
+  }
+
+  private isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected == numRows;
+  }
+
+  private masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  private select(node) {
+    this.selection.clear();
+    this.selection.toggle(node);
   }
 }

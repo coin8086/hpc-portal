@@ -2,6 +2,11 @@ mat-table {
   margin-top: 1em;
 }
 
+.mat-column-select {
+  overflow: initial;
+  flex: 0.3;
+}
+
 .mat-column-progress {
   flex: 0.5;
 }
