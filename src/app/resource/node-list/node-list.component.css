@@ -10,3 +10,7 @@
   overflow: initial;
   flex: 0.3;
 }
+
+.mat-column-actions {
+  flex: 0.3;
+}

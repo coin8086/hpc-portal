@@ -15,6 +15,10 @@ mat-table {
   flex: 0.5;
 }
 
+.mat-column-actions {
+  flex: 0.3;
+}
+
 .mat-row:hover {
   background: rgba(0,0,0,.04);
 }
