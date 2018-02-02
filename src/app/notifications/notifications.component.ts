@@ -14,6 +14,19 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
   }
 
+  private iconMap = {
+    info: 'info_outline',
+    error: 'error',
+    warning: 'warning',
+  };
+
+  private icon(item): string {
+    let ic = this.iconMap[item.type];
+    if (!ic)
+      ic = 'info_outline';
+    return ic;
+  }
+
   private removeItem(item): void {
     for(let i = 0; i < this.items.length; i++) {
       if (this.items[i].id == item.id) {

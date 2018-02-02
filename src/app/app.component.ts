@@ -34,17 +34,24 @@ export class AppComponent {
   private notifications = [
     {
       id: 1,
-      ts: now - 10 * 60 * 1000,
+      ts: now - 27 * 60 * 1000,
       type: 'info',
       message: 'Cluster Run: Command "dir" is in progress...',
       link: '/#/command/results/1',
     },
     {
       id: 2,
-      ts: now - 27 * 60 * 1000,
-      type: 'info',
-      message: 'Diagnostics: Ping test completed.',
+      ts: now - 10 * 60 * 1000,
+      type: 'error',
+      message: 'Diagnostics: Ping test failed.',
       link: '/#/diagnostics/results/2',
+    },
+    {
+      id: 3,
+      ts: now - 2 * 60 * 1000,
+      type: 'warning',
+      message: 'It\'s going to rain in 30 minutes.',
+      link: 'https://weather.com',
     },
   ];
 }
