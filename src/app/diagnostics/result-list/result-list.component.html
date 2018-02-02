@@ -1,6 +1,6 @@
 <div class="actions">
-  <button mat-raised-button [disabled]="selection.selected.length == 0">Rerun</button>
-  <button mat-raised-button [disabled]="selection.selected.length == 0">Cancel</button>
+  <button mat-raised-button [disabled]="hasNoSelection()">Rerun</button>
+  <button mat-raised-button [disabled]="hasNoSelection()">Cancel</button>
 </div>
 
 <mat-table #table [dataSource]="dataSource">

@@ -1,6 +1,6 @@
 <div class="actions">
-  <button mat-raised-button [disabled]="list.selectedData.length == 0" (click)="list.runDiagnostics()">Run Diagnostics...</button>
-  <button mat-raised-button [disabled]="list.selectedData.length == 0" (click)="list.runCommand()">Run Command...</button>
+  <button mat-raised-button [disabled]="hasNoSelection()" (click)="list.runDiagnostics()">Run Diagnostics...</button>
+  <button mat-raised-button [disabled]="hasNoSelection()" (click)="list.runCommand()">Run Command...</button>
 </div>
 <div class="filter">
   <mat-form-field>

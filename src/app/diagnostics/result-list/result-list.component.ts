@@ -29,6 +29,10 @@ export class ResultListComponent {
     });
   }
 
+  private hasNoSelection(): boolean {
+    return this.selection.selected.length == 0;
+  }
+
   private isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
