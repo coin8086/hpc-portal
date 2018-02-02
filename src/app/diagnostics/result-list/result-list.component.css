@@ -10,6 +10,11 @@ mat-table {
   flex: 0.5;
 }
 
-mat-row:hover {
-  cursor: pointer;
+.mat-row:hover {
+  background: rgba(0,0,0,.04);
 }
+
+.mat-row a {
+  color: #3b46da;
+}
+

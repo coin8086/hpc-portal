@@ -25,8 +25,4 @@ export class ResultListComponent {
       this.dataSource.data = results;
     });
   }
-
-  viewDetail(result: Result): void {
-    this.router.navigate([result.id], { relativeTo: this.route })
-  }
 }

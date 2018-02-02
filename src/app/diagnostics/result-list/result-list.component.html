@@ -7,7 +7,7 @@
 
   <ng-container matColumnDef="testName">
     <mat-header-cell *matHeaderCellDef> Test Name </mat-header-cell>
-    <mat-cell *matCellDef="let result"> {{result.testName}} </mat-cell>
+    <mat-cell *matCellDef="let result"><a [routerLink]="result.id">{{result.testName}}</a></mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="state">
@@ -31,5 +31,5 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let result; columns: displayedColumns;" (click)="viewDetail(result)"></mat-row>
+  <mat-row *matRowDef="let result; columns: displayedColumns;"></mat-row>
 </mat-table>
