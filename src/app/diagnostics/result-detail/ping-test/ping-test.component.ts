@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Result } from '../../result';
@@ -11,6 +11,9 @@ import { PingTestNodeResultComponent } from './ping-test-node-result/ping-test-n
 })
 export class PingTestComponent implements OnInit {
   @Input() result: Result;
+
+  @ViewChild('filter')
+  private filterInput;
 
   private dataSource = new MatTableDataSource();
   private displayedColumns = ['Node', 'State', 'Worst', 'Best', 'Average'];
@@ -40,5 +43,10 @@ export class PingTestComponent implements OnInit {
       width: '98%',
       data: { node: node }
     });
+  }
+
+  filterNodes(state): void {
+    this.applyFilter(state);
+    this.filterInput.nativeElement.value = state;
   }
 }

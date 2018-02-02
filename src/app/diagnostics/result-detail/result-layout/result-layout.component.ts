@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 import { Result } from '../../result';
 
 @Component({
@@ -9,6 +9,9 @@ import { Result } from '../../result';
 export class ResultLayoutComponent implements OnInit {
   @Input()
   result: Result = {} as Result;
+
+  @Output()
+  filterNodes: EventEmitter<any> = new EventEmitter();
 
   @ContentChild('nodes')
   nodesTemplate: TemplateRef<any>;
@@ -21,6 +24,13 @@ export class ResultLayoutComponent implements OnInit {
     //legend : {
     //  display: false,
     //},
+    onClick: (event, item) => {
+      if (!item || item.length == 0)
+        return;
+      let index = item[0]._index;
+      let text = index == 0 ? 'success' : 'failure';
+      this.filterNodes.emit(text);
+    }
   };
 
   success = 0;

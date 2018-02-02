@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Result } from '../../result';
 
@@ -9,6 +9,9 @@ import { Result } from '../../result';
 })
 export class ServiceRunningTestComponent implements OnInit {
   @Input() result: Result;
+
+  @ViewChild('filter')
+  private filterInput;
 
   private dataSource = new MatTableDataSource();
   private displayedColumns = ['Node', 'State', 'HPC Management Service', 'HPC MPI Service', 'HPC Node Manager Service', 'HPC SOA Diag Mon Service', 'HPC Monitoring Client Service', 'HPC Broker Service'];
@@ -29,4 +32,8 @@ export class ServiceRunningTestComponent implements OnInit {
     this.dataSource.filter = text;
   }
 
+  filterNodes(state): void {
+    this.applyFilter(state);
+    this.filterInput.nativeElement.value = state;
+  }
 }
