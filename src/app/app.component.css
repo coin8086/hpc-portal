@@ -44,3 +44,15 @@ app-breadcrumb {
   margin-left: 1.5em;
   font-size: 72%;
 }
+
+.notification-num {
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  top: 2px;
+  right: 2px;
+  border-radius: 50%;
+  background-color: #ff0833;
+}
