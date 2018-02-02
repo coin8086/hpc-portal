@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-const now = (new Date()).getTime();
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-notifications',
@@ -8,24 +6,20 @@ const now = (new Date()).getTime();
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
-  private items = [
-    {
-      ts: now - 10 * 60 * 1000,
-      type: 'info',
-      message: 'Cluster Run: Command "dir" is in progress...',
-      link: '/#/command/results/1',
-    },
-    {
-      ts: now - 27 * 60 * 1000,
-      type: 'info',
-      message: 'Diagnostics: Ping test completed.',
-      link: '/#/diagnostics/results/2',
-    },
-  ];
+  @Input()
+  items: any[];
 
   constructor() {}
 
   ngOnInit() {
   }
 
+  private removeItem(item): void {
+    for(let i = 0; i < this.items.length; i++) {
+      if (this.items[i].id == item.id) {
+        this.items.splice(i, 1);
+        break;
+      }
+    }
+  }
 }

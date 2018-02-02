@@ -5,7 +5,10 @@
     <app-breadcrumb></app-breadcrumb>
   </div>
   <div class="right">
-    <a mat-icon-button (click)="right.toggle()"><span class="notification-num">2</span><mat-icon>event_note</mat-icon></a>
+    <a mat-icon-button (click)="right.toggle()">
+      <span class="notification-num" [ngClass]="{hidden: notifications.length == 0}">{{notifications.length}}</span>
+      <mat-icon>event_note</mat-icon>
+    </a>
   </div>
 </mat-toolbar>
 
@@ -18,7 +21,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav #right position="end" mode="over">
-    <app-notifications></app-notifications>
+    <app-notifications [items]="notifications"></app-notifications>
   </mat-sidenav>
   <mat-sidenav-content class="main-container">
     <router-outlet></router-outlet>

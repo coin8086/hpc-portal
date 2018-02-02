@@ -56,3 +56,7 @@ app-breadcrumb {
   border-radius: 50%;
   background-color: #ff0833;
 }
+
+.notification-num.hidden {
+  display: none;
+}
