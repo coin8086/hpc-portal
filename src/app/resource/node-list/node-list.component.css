@@ -8,4 +8,5 @@
 
 .mat-column-select {
   overflow: initial;
+  flex: 0.3;
 }
