@@ -1,3 +1,4 @@
-<p>
-  jobs works!
-</p>
+<div class="block jobs">
+  <div class="note">In the last 24 hours: {{finishedJobs}} of {{totalJobs}} jobs are finished, {{failedJobs}} failed, and {{runningJobs}} are running.</div>
+  <chart type="doughnut" [data]="jobData" [options]="chartOption"></chart>
+</div>

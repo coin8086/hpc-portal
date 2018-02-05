@@ -1,0 +1,10 @@
+/* This is dedicated for its inner chart and must have relative position! */
+.block {
+  position: relative;
+  width: 440px;
+}
+
+.block chart {
+  height: 180px;
+}
+
