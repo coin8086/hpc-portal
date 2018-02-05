@@ -1,25 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dashboard-nodes',
-  templateUrl: './nodes.component.html',
-  styleUrls: ['./nodes.component.css']
+  selector: 'dashboard-node-state',
+  templateUrl: './node-state.component.html',
+  styleUrls: ['./node-state.component.css']
 })
-export class NodesComponent implements OnInit {
-  healthData = {
-    labels: ['OK', 'Warning', 'Error', 'Transitional', 'Unapproved'],
-    datasets: [{
-      data: [257, 33, 20, 18, 12],
-      backgroundColor: [
-        '#44d42b',
-        '#ffee0a',
-        '#ff4e4e',
-        '#20f5ed',
-        '#6d6e71',
-      ]
-    }],
-  };
-
+export class NodeStateComponent implements OnInit {
   stateData = {
     labels: ['Online', 'Offline', 'Unknown', 'Provisioning', 'Starting', 'Draining', 'Removing', 'Rejected', 'Not-Deployed', 'Stopping'],
     datasets: [{
@@ -39,9 +25,8 @@ export class NodesComponent implements OnInit {
     }],
   };
 
-  okNodes = this.healthData.datasets[0].data[0];
   onlineNodes = this.stateData.datasets[0].data[0];
-  totalNodes = this.healthData.datasets[0].data.reduce((acc, e) => acc + e);
+  totalNodes = this.stateData.datasets[0].data.reduce((acc, e) => acc + e);
 
   chartOption = {
     responsive: true,

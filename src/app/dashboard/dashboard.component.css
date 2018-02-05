@@ -3,15 +3,8 @@
   flex-wrap: wrap;
 }
 
-.block {
+.row * {
   flex: 1;
   padding: 10px;
 }
 
-.nodes {
-  flex: 2;
-}
-
-h2 {
-  margin-top: 0;
-}

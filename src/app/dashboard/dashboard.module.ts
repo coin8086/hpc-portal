@@ -4,7 +4,8 @@ import { ChartModule } from 'angular2-chartjs';
 import { MaterialsModule } from '../materials.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { NodesComponent } from './nodes/nodes.component';
+import { NodeHealthComponent } from './node-health/node-health.component';
+import { NodeStateComponent } from './node-state/node-state.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { LocationComponent } from './location/location.component';
 
@@ -15,7 +16,7 @@ import { LocationComponent } from './location/location.component';
     ChartModule,
     MaterialsModule,
   ],
-  declarations: [DashboardComponent, NodesComponent, JobsComponent, LocationComponent],
+  declarations: [DashboardComponent, NodeHealthComponent, NodeStateComponent, JobsComponent, LocationComponent],
   //bootstrap: [HomeComponent]
 })
 export class DashboardModule { }
