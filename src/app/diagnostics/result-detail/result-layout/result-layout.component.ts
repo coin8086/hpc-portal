@@ -30,7 +30,11 @@ export class ResultLayoutComponent implements OnInit {
       let index = item[0]._index;
       let text = index == 0 ? 'success' : 'failure';
       this.filterNodes.emit(text);
-    }
+    },
+    //The CPU is high on the hover event. So maybe it's not good to do it.
+    onHover: (event, item) => {
+      event.target.style.cursor = item.length == 0 ? 'default' : 'pointer';
+    },
   };
 
   success = 0;
