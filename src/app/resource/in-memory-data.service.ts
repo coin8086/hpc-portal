@@ -16,13 +16,17 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   randomState(): string {
-    const states = ['online', 'offline'];
-    return states[Math.random() > 0.7 ? 1 : 0];
+    const states = ['online', 'offline', 'unknown', 'provisioning', 'starting', 'draining', 'removing', 'rejected', 'not-deployed'];
+    let idx = Math.random() < 0.7 ? 0 : (this.randomNum(100) % (states.length - 1) + 1);
+    if (idx < 0 || idx >= states.length)
+      console.log(idx);
+    return states[idx];
   }
 
   randomHealth(): string {
-    const states = ['ok', 'error'];
-    return states[Math.random() > 0.7 ? 1 : 0];
+    const states = ['ok', 'warning', 'error', 'transitional', 'unapproved'];
+    let idx = Math.random() < 0.7 ? 0 : (this.randomNum(100) % (states.length - 1) + 1);
+    return states[idx];
   }
 
   randomNum(scale: number): number {
@@ -40,16 +44,17 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   createDb() {
-    let names = this.generateNames(100);
+    let names = this.generateNames(200);
     let index = 1;
     let nodes = names.map(name => {
       let state = this.randomState();
+      let health = this.randomHealth();
       return {
         id: index++,
         name: name,
         state: state,
-        health: this.randomHealth(),
-        runningJobs: state == 'offline' ? 0 : this.randomNum(100),
+        health: health,
+        runningJobs: state == 'online' && health == 'ok' ? this.randomNum(100) : 0,
         cpuUsage: this.generateCpuUsage(),
       };
     });
