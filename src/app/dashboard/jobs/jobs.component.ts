@@ -29,6 +29,9 @@ export class JobsComponent implements OnInit {
   chartOption = {
     responsive: true,
     maintainAspectRatio: false,
+    legend: {
+      position: 'right',
+    },
   };
 
   constructor() { }
