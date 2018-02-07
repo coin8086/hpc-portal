@@ -38,6 +38,15 @@ app-back-button {
 
 .overview {
   margin: 1em 0;
+
+  .note {
+    margin: 0.5em 0;
+  }
+
+  chart {
+    height: 200px;
+    max-width: 400px;
+  }
 }
 
 chart {

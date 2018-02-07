@@ -19,11 +19,11 @@ export class ResultLayoutComponent implements OnInit {
   overviewData: any = {};
 
   overviewOption = {
-    responsive: false,
-    //maintainAspectRatio: false,
-    //legend : {
-    //  display: false,
-    //},
+    responsive: true,
+    maintainAspectRatio: false,
+    legend : {
+      position: 'right',
+    },
     onClick: (event, item) => {
       if (!item || item.length == 0)
         return;
@@ -55,10 +55,8 @@ export class ResultLayoutComponent implements OnInit {
       datasets: [{
         data: [this.success, this.failure],
         backgroundColor: [
-          //'#d5ffd4',
-          //'#ffdada',
-          '#109210',
-          '#f34646',
+          '#44d42b',
+          '#ff4e4e',
         ]
       }],
     };
