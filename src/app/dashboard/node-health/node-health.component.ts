@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dashboard-node-health',
@@ -29,10 +30,22 @@ export class NodeHealthComponent implements OnInit {
     legend: {
       position: 'right',
     },
+    onClick: (event, items) => {
+      if (!items || items.length == 0)
+        return;
+      let index = items[0]._index;
+      let text = this.healthData.labels[index].toLowerCase();
+      this.router.navigate(['..', 'resource'], { relativeTo: this.route, queryParams: { filter: text }});
+    },
+    onHover: (event, items) => {
+      event.target.style.cursor = items.length == 0 ? 'default' : 'pointer';
+    },
   };
 
-  constructor() {
-  }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
   }
