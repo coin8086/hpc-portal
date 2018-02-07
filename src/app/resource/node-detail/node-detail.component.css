@@ -9,5 +9,6 @@ h2 app-back-button {
 }
 
 chart {
-  min-height: 150px;
+  height: 150px;
+  max-width: 600px;
 }
