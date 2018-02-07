@@ -9,9 +9,9 @@
 </div>
 <mat-tab-group (selectedTabChange)="onTabChanged($event)">
   <mat-tab label="List" >
-    <resource-node-list [nodes]="nodes"></resource-node-list>
+    <resource-node-list [dataSource]="dataSource"></resource-node-list>
   </mat-tab>
   <mat-tab label="Heatmap">
-    <resource-node-heatmap [nodes]="nodes" (clickNode)="viewNodeDetail($event)"></resource-node-heatmap>
+    <resource-node-heatmap [nodes]="dataSource.filteredData" (clickNode)="viewNodeDetail($event)"></resource-node-heatmap>
   </mat-tab>
 </mat-tab-group>

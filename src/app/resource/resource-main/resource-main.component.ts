@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs'
+import { MatTableDataSource } from '@angular/material';
 import { NodeService } from '../node.service';
 import { NodeListComponent } from '../node-list/node-list.component';
 import { NodeHeatmapComponent } from '../node-heatmap/node-heatmap.component';
@@ -11,7 +12,7 @@ import { NodeHeatmapComponent } from '../node-heatmap/node-heatmap.component';
   styleUrls: ['./resource-main.component.css']
 })
 export class ResourceMainComponent implements OnInit {
-  private nodes = [];
+  private dataSource = new MatTableDataSource();
 
   private query = { view: '', filter: '' };
 
@@ -32,7 +33,7 @@ export class ResourceMainComponent implements OnInit {
 
   ngOnInit() {
     this.nodeService.getNodes().subscribe(nodes => {
-      this.nodes = nodes;
+      this.dataSource.data = nodes;
     });
     this.route.queryParamMap.subscribe(params => {
       this.query.view = params.get('view') || 'list';
@@ -51,18 +52,13 @@ export class ResourceMainComponent implements OnInit {
 
     let filter = this.query.filter;
     if (filter) {
-      this.applyFilter(filter);
+      this.dataSource.filter = filter;
     }
   }
 
   onTabChanged(event): void {
     this.query.view = event.index == 0 ? 'list' : 'heatmap';
     this.updateUrl();
-  }
-
-  applyFilter(text: string): void {
-    this.list.filter(text);
-    this.map.nodes = this.list.filteredData;
   }
 
   viewNodeDetail(node) {
