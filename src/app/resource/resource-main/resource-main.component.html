@@ -4,7 +4,7 @@
 </div>
 <div class="filter">
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="updateUrl()" [(ngModel)]="query.filter" placeholder="Filter">
   </mat-form-field>
 </div>
 <mat-tab-group (selectedTabChange)="onTabChanged($event)">
