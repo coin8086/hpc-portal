@@ -1,18 +1,33 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
-  generateCpuUsage(): any[] {
+  generateUsage(cb): any[] {
     let usage = [];
     let now = new Date().getTime();
     const span = 5 * 60 * 1000;
     const num = 12;
     for (let i = 0; i < num; i++) {
       let d = new Date(now - span * i);
-      let v = Math.round(Math.random() * 100);
-      usage.push({ ts: d.getTime(), value: v });
+      let item = cb(d, i, num);
+      usage.push(item);
     }
     usage.reverse();
     return usage;
+  }
+
+  generateCpuUsage(): any[] {
+    return this.generateUsage((d) => ({
+      ts: d.getTime(),
+      value: Math.round(Math.random() * 100)
+    }));
+  }
+
+  generateNetworkUsage(): any[] {
+    return this.generateUsage((d) => ({
+      ts: d.getTime(),
+      inbound: Math.random(),
+      outbound: Math.random() * 10,
+    }));
   }
 
   randomState(): string {
@@ -56,6 +71,7 @@ export class InMemoryDataService implements InMemoryDbService {
         health: health,
         runningJobs: state == 'online' && health == 'ok' ? this.randomNum(100) : 0,
         cpuUsage: this.generateCpuUsage(),
+        networkUsage: this.generateNetworkUsage(),
       };
     });
     return { nodes };

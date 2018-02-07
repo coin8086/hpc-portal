@@ -5,7 +5,9 @@
 <mat-tab-group [dynamicHeight]="true">
   <mat-tab label="Usage">
     <h3>CPU</h3>
-    <chart type="line" [data]="cpuChartData" [options]="cpuChartOptions"></chart>
+    <chart type="line" [data]="cpuData" [options]="cpuOptions"></chart>
+    <h3>Network</h3>
+    <chart type="line" [data]="networkData" [options]="networkOptions"></chart>
   </mat-tab>
   <mat-tab label="Events">
   </mat-tab>

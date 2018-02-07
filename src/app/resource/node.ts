@@ -4,4 +4,5 @@ export class Node {
   health: string;
   runningJobs: number;
   cpuUsage: any;
+  networkUsage: any;
 }
