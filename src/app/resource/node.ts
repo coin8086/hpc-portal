@@ -5,4 +5,5 @@ export class Node {
   runningJobs: number;
   cpuUsage: any;
   networkUsage: any;
+  diskUsage: any;
 }

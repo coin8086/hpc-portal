@@ -30,6 +30,14 @@ export class InMemoryDataService implements InMemoryDbService {
     }));
   }
 
+  generateDiskUsage(): any[] {
+    return this.generateUsage((d) => ({
+      ts: d.getTime(),
+      read: Math.random() * 10,
+      write: Math.random(),
+    }));
+  }
+
   randomState(): string {
     const states = ['online', 'offline', 'unknown', 'provisioning', 'starting', 'draining', 'removing', 'rejected', 'not-deployed'];
     let idx = Math.random() < 0.7 ? 0 : (this.randomNum(100) % (states.length - 1) + 1);
@@ -72,6 +80,7 @@ export class InMemoryDataService implements InMemoryDbService {
         runningJobs: state == 'online' && health == 'ok' ? this.randomNum(100) : 0,
         cpuUsage: this.generateCpuUsage(),
         networkUsage: this.generateNetworkUsage(),
+        diskUsage: this.generateDiskUsage(),
       };
     });
     return { nodes };

@@ -25,7 +25,7 @@ export class NodeDetailComponent implements AfterViewInit {
           min: 0,
           max: 100,
           stepSize: 25,
-        }
+        },
         scaleLabel: {
           display: true,
           labelString: 'Percentage'
@@ -52,6 +52,26 @@ export class NodeDetailComponent implements AfterViewInit {
       }]
     }
   };
+
+  diskData: any = {};
+
+  diskOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 2,
+          beginAtZero: true,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'GB'
+        }
+      }]
+    }
+  };
+
   constructor(
     private nodeService: NodeService,
     private route: ActivatedRoute,
@@ -64,6 +84,7 @@ export class NodeDetailComponent implements AfterViewInit {
         this.node = node;
         this.makeCpuData(node.cpuUsage);
         this.makeNetworkData(node.networkUsage);
+        this.makeDiskData(node.diskUsage);
       });
     });
   }
@@ -97,6 +118,19 @@ export class NodeDetailComponent implements AfterViewInit {
       datasets: [
         { label: 'In',  data: data1, fill: false, borderColor: '#215ebb' },
         { label: 'Out', data: data2, fill: false, borderColor: '#1aab02' }
+      ]
+    };
+  }
+
+  makeDiskData(usage): void {
+    let labels = this.makeLabels(usage);
+    let data1 = usage.map(point => point.read.toFixed(2));
+    let data2 = usage.map(point => point.write.toFixed(2));
+    this.diskData = {
+      labels: labels,
+      datasets: [
+        { label: 'Read',  data: data1, fill: false, borderColor: '#215ebb' },
+        { label: 'Write', data: data2, fill: false, borderColor: '#1aab02' }
       ]
     };
   }
