@@ -14,7 +14,7 @@ export class NodeListComponent {
   @Input()
   dataSource: MatTableDataSource<any>;
 
-  private displayedColumns = ['select', 'name', 'state', 'health', 'runningJobs', 'actions'];
+  private displayedColumns = ['select', 'name', 'health', 'state', 'runningJobs', 'actions'];
 
   private selection = new SelectionModel(true, []);
 
