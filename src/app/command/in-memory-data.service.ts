@@ -48,9 +48,17 @@ export class InMemoryDataService implements InMemoryDbService {
     };
     let names = this.generateNames(100);
     (result as any).nodes = names.map(name => {
+      let s;
+      if (state === 'running') {
+        let r = Math.random();
+        s = r < 0.5 ? 'running' : (r < 0.9 ? 'success' : 'failure');
+      }
+      else {
+        s = state;
+      }
       return {
         name: name,
-        state: state,
+        state: s,
         output: dirResult,
       };
     });
