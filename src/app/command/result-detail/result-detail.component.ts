@@ -11,6 +11,10 @@ import { CommandService } from '../command.service';
 export class ResultDetailComponent implements OnInit {
   private result: Result = {} as Result;
 
+  private filter = '';
+
+  private filtered: any[];
+
   private overviewData: any = {};
 
   private overviewOption = {
@@ -18,6 +22,16 @@ export class ResultDetailComponent implements OnInit {
     maintainAspectRatio: false,
     legend : {
       position: 'right',
+    },
+    onClick: (event, item) => {
+      if (!item || item.length == 0)
+        return;
+      let index = item[0]._index;
+      let text = index == 0 ? 'success' : (index == 1 ? 'failure' : 'running');
+      this.filterNodes(text);
+    },
+    onHover: (event, item) => {
+      event.target.style.cursor = item.length == 0 ? 'default' : 'pointer';
     },
   };
 
@@ -32,8 +46,17 @@ export class ResultDetailComponent implements OnInit {
       this.commandService.getResult(id).subscribe(result => {
         this.result = result;
         this.makeChartData();
+        this.filterNodes('');
       });
     });
+  }
+
+  filterNodes(text) {
+    this.filter = text;
+    if (!text)
+      this.filtered = this.result.nodes;
+    else
+      this.filtered = this.result.nodes.filter((node) => node.state === text);
   }
 
   makeChartData() {

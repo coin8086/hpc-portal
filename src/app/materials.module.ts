@@ -4,6 +4,7 @@ import {
   MatSidenavModule,
   MatListModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatIconModule,
   MatTableModule,
   MatTabsModule,
@@ -15,7 +16,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
   MatDialogModule,
-  MatMenuModule
+  MatMenuModule,
 } from '@angular/material';
 
 const modules = [
@@ -23,6 +24,7 @@ const modules = [
   MatSidenavModule,
   MatListModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatIconModule,
   MatTableModule,
   MatTabsModule,
