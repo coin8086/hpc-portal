@@ -12,7 +12,7 @@ import { NewCommandComponent } from '../new-command/new-command.component';
 })
 export class NodeListComponent {
   @Input()
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
   private displayedColumns = ['select', 'name', 'health', 'state', 'runningJobs', 'actions'];
 
