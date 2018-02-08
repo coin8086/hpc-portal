@@ -8,7 +8,6 @@
 
 <div class="overview">
   <h3>Overview</h3>
-  <div class="note">Success/Total: {{success}}/{{success + failure}} Success Rate: {{success / (success + failure) | percent}}</div>
   <chart type="doughnut" [data]="overviewData" [options]="overviewOption"></chart>
 </div>
 

@@ -31,29 +31,31 @@ export class ResultLayoutComponent implements OnInit {
       let text = index == 0 ? 'success' : 'failure';
       this.filterNodes.emit(text);
     },
-    //The CPU is high on the hover event. So maybe it's not good to do it.
     onHover: (event, item) => {
       event.target.style.cursor = item.length == 0 ? 'default' : 'pointer';
     },
   };
 
-  success = 0;
-
-  failure = 0;
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.makeChartData();
+  }
+
+  makeChartData() {
+    let success = 0;
+    let failure = 0;
+
     this.result.nodes.forEach(node => {
       if (node.state == 'success')
-        this.success++;
+        success++;
       else
-        this.failure++;
+        failure++;
     });
     this.overviewData = {
       labels: ['Success', 'Failure'],
       datasets: [{
-        data: [this.success, this.failure],
+        data: [success, failure],
         backgroundColor: [
           '#44d42b',
           '#ff4e4e',
