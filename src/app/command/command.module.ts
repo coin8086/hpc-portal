@@ -5,6 +5,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { CommandService } from './command.service';
 import { FormsModule } from '@angular/forms'
+import { ChartModule } from 'angular2-chartjs';
 import { MaterialsModule } from '../materials.module';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { CommandRoutingModule } from './command-routing.module';
@@ -26,6 +27,7 @@ import { ResultDetailComponent } from './result-detail/result-detail.component';
     MaterialsModule,
     WidgetsModule,
     FormsModule,
+    ChartModule,
   ],
   declarations: [CommandComponent, ResultListComponent, ResultDetailComponent],
   providers: [CommandService],

@@ -11,6 +11,16 @@ import { CommandService } from '../command.service';
 export class ResultDetailComponent implements OnInit {
   private result: Result = {} as Result;
 
+  private overviewData: any = {};
+
+  private overviewOption = {
+    responsive: true,
+    maintainAspectRatio: false,
+    legend : {
+      position: 'right',
+    },
+  };
+
   constructor(
     private route: ActivatedRoute,
     private commandService: CommandService,
@@ -21,8 +31,35 @@ export class ResultDetailComponent implements OnInit {
       let id = map.get('id');
       this.commandService.getResult(id).subscribe(result => {
         this.result = result;
+        this.makeChartData();
       });
     });
+  }
+
+  makeChartData() {
+    let success = 0;
+    let failure = 0;
+    let running = 0;
+
+    this.result.nodes.forEach(node => {
+      if (node.state == 'success')
+        success++;
+      else if (node.state == 'failure')
+        failure++;
+      else
+        running++;
+    });
+    this.overviewData = {
+      labels: ['Success', 'Failure', 'Running'],
+      datasets: [{
+        data: [success, failure, running],
+        backgroundColor: [
+          '#44d42b',
+          '#ff4e4e',
+          '#6f7de4',
+        ]
+      }],
+    };
   }
 
   stateIcon(state) {
