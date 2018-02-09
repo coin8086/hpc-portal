@@ -21,11 +21,6 @@ export class JobsComponent implements OnInit {
     }],
   };
 
-  runningJobs = this.jobData.datasets[0].data[2];
-  finishedJobs = this.jobData.datasets[0].data[3];
-  failedJobs = this.jobData.datasets[0].data[4];
-  totalJobs = this.jobData.datasets[0].data.reduce((acc, e) => acc + e);
-
   chartOption = {
     responsive: true,
     maintainAspectRatio: false,

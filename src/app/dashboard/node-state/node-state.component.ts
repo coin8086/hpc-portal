@@ -26,9 +26,6 @@ export class NodeStateComponent implements OnInit {
     }],
   };
 
-  onlineNodes = this.stateData.datasets[0].data[0];
-  totalNodes = this.stateData.datasets[0].data.reduce((acc, e) => acc + e);
-
   chartOption = {
     responsive: true,
     maintainAspectRatio: false,

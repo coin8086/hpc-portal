@@ -21,9 +21,6 @@ export class NodeHealthComponent implements OnInit {
     }],
   };
 
-  okNodes = this.healthData.datasets[0].data[0];
-  totalNodes = this.healthData.datasets[0].data.reduce((acc, e) => acc + e);
-
   chartOption = {
     responsive: true,
     maintainAspectRatio: false,
