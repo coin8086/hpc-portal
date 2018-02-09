@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
   <div class="left">
-    <button mat-icon-button (click)="side.toggle()"><mat-icon>menu</mat-icon></button>
-    <a class="home" routerLink="/"><mat-icon>home</mat-icon><h1>Microsoft HPC</h1></a>
+    <button mat-icon-button (click)="side.toggle()"><i class="material-icons">menu</i></button>
+    <a class="home" routerLink="/"><i class="material-icons">home</i><h1>Microsoft HPC</h1></a>
     <app-breadcrumb></app-breadcrumb>
   </div>
   <div class="right">
     <a mat-icon-button (click)="right.toggle()">
       <span class="notification-num" [ngClass]="{hidden: notifications.length == 0}">{{notifications.length}}</span>
-      <mat-icon>event_note</mat-icon>
+      <i class="material-icons">event_note</i>
     </a>
   </div>
 </mat-toolbar>
@@ -16,7 +16,7 @@
   <mat-sidenav #side mode="side" opened="true">
     <mat-nav-list>
       <a *ngFor="let item of items" mat-list-item routerLinkActive="active" [routerLink]="item.link">
-        <mat-icon>{{item.icon}}</mat-icon><span class="title">{{item.title}}</span>
+        <i class="material-icons">{{item.icon}}</i><span class="title">{{item.title}}</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
