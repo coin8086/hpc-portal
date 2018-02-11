@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
 import { Result } from '../result';
 import { CommandService } from '../command.service';
 
@@ -11,9 +12,7 @@ import { CommandService } from '../command.service';
 export class ResultDetailComponent implements OnInit {
   private result: Result = {} as Result;
 
-  private filter = '';
-
-  private filtered: any[];
+  private nodeResults = new MatTableDataSource();
 
   private overviewData: any = {};
 
@@ -28,7 +27,7 @@ export class ResultDetailComponent implements OnInit {
         return;
       let index = item[0]._index;
       let text = index == 0 ? 'success' : (index == 1 ? 'failure' : 'running');
-      this.filterNodes(text);
+      this.nodeResults.filter = text;
     },
     onHover: (event, item) => {
       event.target.style.cursor = item.length == 0 ? 'default' : 'pointer';
@@ -38,7 +37,13 @@ export class ResultDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private commandService: CommandService,
-  ) {}
+  ) {
+    this.nodeResults.filterPredicate = (data: any, filter: string) => {
+      let lwr = filter.trim().toLowerCase();
+      return (data.state.toLowerCase().indexOf(lwr) >= 0
+        || data.name.toLowerCase().indexOf(lwr) >= 0);
+    }
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(map => {
@@ -46,17 +51,9 @@ export class ResultDetailComponent implements OnInit {
       this.commandService.getResult(id).subscribe(result => {
         this.result = result;
         this.makeChartData();
-        this.filterNodes('');
+        this.nodeResults.data = result.nodes;
       });
     });
-  }
-
-  filterNodes(text) {
-    this.filter = text;
-    if (!text)
-      this.filtered = this.result.nodes;
-    else
-      this.filtered = this.result.nodes.filter((node) => node.state === text);
   }
 
   makeChartData() {

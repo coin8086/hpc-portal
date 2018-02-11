@@ -11,23 +11,16 @@
   <chart type="doughnut" [data]="overviewData" [options]="overviewOption"></chart>
 </div>
 
-<mat-button-toggle-group [(ngModel)]="filter" (change)="filterNodes($event.value)">
-  <mat-button-toggle value="success">
-    <i class="material-icons">check</i>
-  </mat-button-toggle>
-  <mat-button-toggle value="failure">
-    <i class="material-icons">close</i>
-  </mat-button-toggle>
-  <mat-button-toggle value="running">
-    <i class="material-icons">directions_run</i>
-  </mat-button-toggle>
-  <mat-button-toggle value="">
-    <i class="material-icons">clear_all</i>
-  </mat-button-toggle>
-</mat-button-toggle-group>
+<div class="filter">
+  <mat-form-field>
+    <input #filter matInput [(ngModel)]="nodeResults.filter" placeholder="Filter">
+    <mat-hint>Filter results by node name or state</mat-hint>
+    <mat-hint align="end">{{nodeResults.filteredData.length}} results</mat-hint>
+  </mat-form-field>
+</div>
 
 <div class="nodes">
-  <div class="node" *ngFor="let node of filtered">
+  <div class="node" *ngFor="let node of nodeResults.filteredData">
     <div class="title" [ngClass]="node.state">
       <i class="material-icons md-18">{{stateIcon(node.state)}}</i>
       <span class="name">{{title(node.name, node.state)}}</span>
