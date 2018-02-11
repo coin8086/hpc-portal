@@ -5,6 +5,8 @@
 <div class="filter">
   <mat-form-field>
     <input matInput (keyup)="updateUrl()" [(ngModel)]="query.filter" placeholder="Filter">
+    <mat-hint>Filter results by node name, health or state</mat-hint>
+    <mat-hint align="end">{{dataSource.filteredData.length}} results</mat-hint>
   </mat-form-field>
 </div>
 <mat-tab-group (selectedTabChange)="onTabChanged($event)">

@@ -3,6 +3,8 @@
     <div class="filter">
       <mat-form-field>
         <input #filter matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <mat-hint>Filter results by node name or state</mat-hint>
+        <mat-hint align="end">{{dataSource.filteredData.length}} results</mat-hint>
       </mat-form-field>
     </div>
 
