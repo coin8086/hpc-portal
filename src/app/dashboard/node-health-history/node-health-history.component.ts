@@ -24,10 +24,12 @@ export class NodeHealthHistoryComponent implements OnInit {
     }
   };
 
+  history = {};
+
   constructor() {}
 
   ngOnInit() {
-    this.generateChartData();
+    this.changeHistory('2h');
   }
 
   generateTuple(total) {
@@ -38,27 +40,38 @@ export class NodeHealthHistoryComponent implements OnInit {
     return rand.map(e => Math.round((e / sum) * total));
   }
 
-  formatTime(d) {
+  formatTime(d, withDay = false) {
     let h:any = d.getHours();
     if (h < 10)
       h = '0' + h;
     let m:any = d.getMinutes();
     if (m < 10)
       m = '0' + m;
-    return '' + h + ':' + m;
+    let time = '' + h + ':' + m;
+    if (withDay) {
+      let day:any = d.getDate();
+      if (day < 10)
+        day = '0' + day;
+      let mon:any = d.getMonth() + 1;
+      if (mon < 10)
+        mon = '0' + mon;
+      let md:any = '' + mon + '/' + day;
+      time = md + ' ' + time;
+    }
+    return time;
   }
 
   generateTimeLabels(now, span, num) {
     let labels = [];
     for (let i = 0; i < num; i++) {
       let d = new Date(now - span * i);
-      labels.push(this.formatTime(d));
+      labels.push(this.formatTime(d, true));
     }
     labels.reverse();
     return labels;
   }
 
-  generateChartData() {
+  generateChartData(span, columns) {
     const labels = [
       'OK',
       'Warning',
@@ -74,24 +87,43 @@ export class NodeHealthHistoryComponent implements OnInit {
       '#6d6e71',
     ]
     let now = new Date().getTime();
-    let spans = 5 * 60 * 1000;
-    let count = 12;
     let values = [];
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < columns; i++) {
       values.push(this.generateTuple(330));
     }
     let datasets = [];
     for (let i = 0; i < 5; i++) {
       let data = [];
-      for (let j = 0; j < count; j++) {
+      for (let j = 0; j < columns; j++) {
         data.push(values[j][i]);
       }
       datasets.push({ label: labels[i], data: data, backgroundColor: colors[i] });
     }
 
     this.chartData = {
-      labels: this.generateTimeLabels(now, spans, count),
+      labels: this.generateTimeLabels(now, span, columns),
       datasets: datasets,
     };
+  }
+
+  changeHistory(time) {
+    let result = history[time];
+    if (result)
+      return result;
+
+    if (time == '2h') {
+      //span = 5 minutes
+      result = this.generateChartData(10 * 60 * 1000, 12);
+    }
+    else if (time == '24h') {
+      //span = 2 hours
+      result = this.generateChartData(1 * 60 * 60 * 1000, 24);
+    }
+    else if (time == '7d') {
+      //span = 12 hours
+      result = this.generateChartData(24 * 60 * 60 * 1000, 7);
+    }
+    history[time] = result;
+    return result;
   }
 }

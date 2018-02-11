@@ -3,5 +3,6 @@ h2 {
 }
 
 chart {
+  margin-top: 1em;
   height: 360px;
 }
