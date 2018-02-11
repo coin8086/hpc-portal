@@ -8,6 +8,7 @@ import { NodeHealthComponent } from './node-health/node-health.component';
 import { NodeStateComponent } from './node-state/node-state.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { LocationComponent } from './location/location.component';
+import { NodeHealthHistoryComponent } from './node-health-history/node-health-history.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { LocationComponent } from './location/location.component';
     ChartModule,
     MaterialsModule,
   ],
-  declarations: [DashboardComponent, NodeHealthComponent, NodeStateComponent, JobsComponent, LocationComponent],
+  declarations: [DashboardComponent, NodeHealthComponent, NodeStateComponent, JobsComponent, LocationComponent, NodeHealthHistoryComponent],
   //bootstrap: [HomeComponent]
 })
 export class DashboardModule { }
