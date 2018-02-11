@@ -51,9 +51,7 @@ export class ResourceMainComponent implements OnInit {
     this.tabs.selectedIndex = (view == 'heatmap') ? 1 : 0;
 
     let filter = this.query.filter;
-    if (filter) {
-      this.dataSource.filter = filter;
-    }
+    this.dataSource.filter = filter;
   }
 
   onTabChanged(event): void {
