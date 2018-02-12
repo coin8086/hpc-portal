@@ -19,17 +19,22 @@
   </mat-form-field>
 </div>
 
-<div class="nodes">
-  <div class="node" *ngFor="let node of nodeResults.filteredData">
-    <div class="title" [ngClass]="node.state">
-      <i class="material-icons md-18">{{stateIcon(node.state)}}</i>
-      <span class="name">{{title(node.name, node.state)}}</span>
-    </div>
+<mat-accordion class="nodes">
+  <mat-expansion-panel class="node" [ngClass]="node.state" *ngFor="let node of nodeResults.filteredData">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="name">{{node.name}}</span>
+      </mat-panel-title>
+      <mat-panel-description>
+        <i class="material-icons md-18">{{stateIcon(node.state)}}</i>
+        <span class="state">{{node.state | titlecase}}</span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
     <div class="details">
       <pre>
 {{node.output}}
       </pre>
     </div>
-  </div>
-</div>
-
+  </mat-expansion-panel>
+</mat-accordion>
