@@ -31,7 +31,11 @@ export class NodeDetailComponent implements AfterViewInit {
           labelString: 'Percentage'
         }
       }]
-    }
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: false,
+    },
   };
 
   networkData: any = {};
@@ -50,7 +54,11 @@ export class NodeDetailComponent implements AfterViewInit {
           labelString: 'GB'
         }
       }]
-    }
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: false,
+    },
   };
 
   diskData: any = {};
@@ -69,7 +77,11 @@ export class NodeDetailComponent implements AfterViewInit {
           labelString: 'GB'
         }
       }]
-    }
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: false,
+    },
   };
 
   constructor(
