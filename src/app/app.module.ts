@@ -5,7 +5,10 @@ import { MaterialsModule } from './materials.module';
 
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
@@ -13,6 +16,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     NotificationsComponent,
     BreadcrumbComponent,
   ],
@@ -22,7 +26,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MaterialsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

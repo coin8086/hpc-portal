@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 const now = (new Date()).getTime();
 
@@ -54,4 +55,10 @@ export class AppComponent {
       link: 'https://weather.com',
     },
   ];
+
+  constructor(private authService: AuthService) {}
+
+  private get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
 }

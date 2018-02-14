@@ -1,12 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: "Dashboard" }},
-  { path: 'resource', loadChildren: 'app/resource/resource.module#ResourceModule', data: { breadcrumb: "Resource" }},
-  { path: 'diagnostics', loadChildren: 'app/diagnostics/diagnostics.module#DiagnosticsModule', data: { breadcrumb: "Diagnostics" }},
-  { path: 'command', loadChildren: 'app/command/command.module#CommandModule', data: { breadcrumb: "Cluster Run" }},
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'dashboard',
+    loadChildren: 'app/dashboard/dashboard.module#DashboardModule',
+    data: { breadcrumb: "Dashboard" },
+  },
+  {
+    path: 'resource',
+    loadChildren: 'app/resource/resource.module#ResourceModule',
+    data: { breadcrumb: "Resource" },
+  },
+  {
+    path: 'diagnostics',
+    loadChildren: 'app/diagnostics/diagnostics.module#DiagnosticsModule',
+    data: { breadcrumb: "Diagnostics" },
+  },
+  {
+    path: 'command',
+    loadChildren: 'app/command/command.module#CommandModule',
+    data: { breadcrumb: "Cluster Run" },
+  },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
