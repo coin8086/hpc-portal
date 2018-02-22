@@ -60,3 +60,12 @@ app-breadcrumb {
 .notification-num.hidden {
   display: none;
 }
+
+.mat-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-text {
+  margin-left: 0.5em;
+}

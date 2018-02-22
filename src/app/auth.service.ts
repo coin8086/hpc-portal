@@ -8,11 +8,15 @@ import 'rxjs/add/operator/delay';
 export class AuthService {
   isLoggedIn = false;
 
+  user = {
+    name: 'Lei.Zhang@microsoft.com',
+  }
+
   //Store the URL so we can redirect after logging in
   redirectUrl: string;
 
   login(): Observable<boolean> {
-    return Observable.of(true).delay(3000).do(val => this.isLoggedIn = true);
+    return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
   }
 
   logout(): void {

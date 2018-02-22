@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './auth.service';
 
 const now = (new Date()).getTime();
@@ -56,9 +57,21 @@ export class AppComponent {
     },
   ];
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    public route: ActivatedRoute) {}
 
   private get isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
+  }
+
+  private get userName(): string {
+    return this.authService.user.name;
+  }
+
+  private logout(): void {
+    this.authService.logout();
+    this.router.navigate(['./login'], { relativeTo: this.route });
   }
 }
