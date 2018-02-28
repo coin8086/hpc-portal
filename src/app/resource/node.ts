@@ -6,4 +6,18 @@ export class Node {
   cpuUsage: any;
   networkUsage: any;
   diskUsage: any;
+  properties: {
+    cpu: string;
+    memory: number;
+    os: string;
+    nodeGroups: string[];
+    nodeTemplate: string;
+    network: {
+      mac: string;
+      ip: string;
+      subnet: string;
+      name: string;
+      domain: string;
+    };
+  };
 }

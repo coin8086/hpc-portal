@@ -72,8 +72,9 @@ export class InMemoryDataService implements InMemoryDbService {
     let nodes = names.map(name => {
       let state = this.randomState();
       let health = this.randomHealth();
+      let isHead = name.indexOf('HN') == 0;
       return {
-        id: index++,
+        id: index,
         name: name,
         state: state,
         health: health,
@@ -81,6 +82,20 @@ export class InMemoryDataService implements InMemoryDbService {
         cpuUsage: this.generateCpuUsage(),
         networkUsage: this.generateNetworkUsage(),
         diskUsage: this.generateDiskUsage(),
+        properties: {
+          cpu: 'Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40 GHz',
+          memory: 14336,
+          os: 'Microsoft Windows NT 6.2.9200.0',
+          nodeGroup: isHead ? ['WCFBrokerNodes', 'HeadNodes', 'CompuateNodes'] : ['CompuateNodes'],
+          nodeTemplate: isHead ? 'HeadNode Template': 'Default ComputeNode Template',
+          network: {
+            mac: '00-0D-3A-A1-B2-17',
+            ip: '10.0.0.' + index++,
+            subnet: '255.255.128.0',
+            name: 'Enterprise',
+            domain: 'reddog.microsoft.com',
+          }
+        },
       };
     });
     return { nodes };

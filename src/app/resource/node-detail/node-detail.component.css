@@ -11,3 +11,14 @@ h2 app-back-button {
 chart {
   height: 200px;
 }
+
+table {
+  width: 100%;
+}
+
+td {
+  height: 2em;
+  padding: 0 0.5em;
+  background-color: #e8e7e7;
+}
+

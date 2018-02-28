@@ -11,6 +11,8 @@ import { NodeService } from '../node.service';
 export class NodeDetailComponent implements AfterViewInit {
   node: Node = {} as Node;
 
+  nodeProperties: any = {};
+
   cpuData: any = {};
 
   cpuOptions = {
@@ -94,6 +96,7 @@ export class NodeDetailComponent implements AfterViewInit {
       let id = map.get('id');
       this.nodeService.getNode(id).subscribe(node => {
         this.node = node;
+        this.nodeProperties = node.properties;
         this.makeCpuData(node.cpuUsage);
         this.makeNetworkData(node.networkUsage);
         this.makeDiskData(node.diskUsage);
