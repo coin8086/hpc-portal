@@ -20,4 +20,12 @@ export class Node {
       domain: string;
     };
   };
+  events: {
+    id: string;
+    type: string;
+    resourceType: string;
+    resources: string[];
+    status: string;
+    notBefore: string;
+  }[];
 }

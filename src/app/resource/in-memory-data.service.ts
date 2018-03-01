@@ -67,13 +67,14 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   createDb() {
+    let now = new Date().getTime();
     let names = this.generateNames(200);
     let index = 1;
     let nodes = names.map(name => {
       let state = this.randomState();
       let health = this.randomHealth();
       let isHead = name.indexOf('HN') == 0;
-      return {
+      let res = {
         id: index,
         name: name,
         state: state,
@@ -90,13 +91,36 @@ export class InMemoryDataService implements InMemoryDbService {
           nodeTemplate: isHead ? 'HeadNode Template': 'Default ComputeNode Template',
           network: {
             mac: '00-0D-3A-A1-B2-17',
-            ip: '10.0.0.' + index++,
+            ip: '10.0.0.' + index,
             subnet: '255.255.128.0',
             name: 'Enterprise',
             domain: 'reddog.microsoft.com',
           }
         },
+        events: [],
       };
+      if (health == 'warning') {
+        res.events = [
+          {
+            id: '5d882999-f4a7-4319-bdb6-2fae35025a45',
+            type: 'Freeze',
+            resourceType: 'VirtualMachine',
+            resources: ["FrontEnd_IN_0", "BackEnd_IN_0"],
+            status: 'Started',
+            notBefore: now,
+          },
+          {
+            id: '81ec720b-98d8-4908-8b3a-436dc61f1114',
+            type: 'Reboot',
+            resourceType: 'VirtualMachine',
+            resources: ["FrontEnd_IN_0", "BackEnd_IN_0"],
+            status: 'Scheduled',
+            notBefore: now + 15 * 60 * 1000,
+          },
+        ];
+      }
+      index++;
+      return res;
     });
     return { nodes };
   }

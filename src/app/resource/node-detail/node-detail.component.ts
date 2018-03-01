@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
 import { Node } from '../node';
 import { NodeService } from '../node.service';
 
@@ -86,6 +87,10 @@ export class NodeDetailComponent implements AfterViewInit {
     },
   };
 
+  events: MatTableDataSource<any> = new MatTableDataSource();
+
+  eventColumns = ['id', 'type', 'resourceType', 'resources', 'status', 'notBefore'];
+
   constructor(
     private nodeService: NodeService,
     private route: ActivatedRoute,
@@ -100,6 +105,7 @@ export class NodeDetailComponent implements AfterViewInit {
         this.makeCpuData(node.cpuUsage);
         this.makeNetworkData(node.networkUsage);
         this.makeDiskData(node.diskUsage);
+        this.events.data = node.events;
       });
     });
   }

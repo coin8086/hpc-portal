@@ -20,6 +20,40 @@
     </div>
   </mat-tab>
   <mat-tab label="Events">
+    <mat-table #table [dataSource]="events">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let event">{{event.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-cell *matCellDef="let event"> {{event.type}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="resourceType">
+        <mat-header-cell *matHeaderCellDef> Resource Type </mat-header-cell>
+        <mat-cell *matCellDef="let event"> {{event.resourceType}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="resources">
+        <mat-header-cell *matHeaderCellDef> Resources </mat-header-cell>
+        <mat-cell *matCellDef="let event"> {{event.resources?.join(', ')}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let event"> {{event.status}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="notBefore">
+        <mat-header-cell *matHeaderCellDef> Not Before </mat-header-cell>
+        <mat-cell *matCellDef="let event"> {{event.notBefore | date:'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="eventColumns"></mat-header-row>
+      <mat-row *matRowDef="let event; columns: eventColumns;"></mat-row>
+    </mat-table>
   </mat-tab>
   <mat-tab label="Jobs">
   </mat-tab>

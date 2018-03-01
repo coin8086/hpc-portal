@@ -22,3 +22,14 @@ td {
   background-color: #e8e7e7;
 }
 
+.mat-column-type, .mat-column-status {
+  flex: 0.3;
+}
+
+.mat-column-resourceType {
+  flex: 0.6;
+}
+
+.mat-column-id {
+  padding-right: 0.5em;
+}
